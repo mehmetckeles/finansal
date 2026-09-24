@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Finansal Bilgiler Okulası</title>
+<meta name="description" content="Fiyat nedir, nereye gider, izini nasıl süreriz? Bu soruya cevap aramış insanların hikâyelerinden oluşan, sırayla okunmak üzere yazılmış bir yazı dizisi.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Finansal Bilgiler Okulası">
+<meta property="og:description" content="Fiyat nedir, nereye gider, izini nasıl süreriz? Bu soruya cevap aramış insanların hikâyeleri.">
+<meta property="og:url" content="https://finansal.mehmetcihatkeles.com/">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#EDEFEA">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231B2433'/%3E%3Cpath d='M8 40 L16 30 L22 36 L30 22 L36 30 L44 18 L50 34 L56 26' fill='none' stroke='%23EE7462' stroke-width='5' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDEFEA; --ink:#1B2433; --muted:#5E6878; --rule:#C6D0D9; --red:#B42318; --soft:#E2E6E0;
+  --serif:"Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#121820; --ink:#E3E5DF; --muted:#98A1AD; --rule:#2A3441; --red:#EE7462; --soft:#19212B; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121820; --ink:#E3E5DF; --muted:#98A1AD; --rule:#2A3441; --red:#EE7462; --soft:#19212B; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.5;
+  font-optical-sizing:auto;font-variant-numeric:oldstyle-nums proportional-nums;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:2px}
+img,svg{max-width:100%}
+
+.wrap{max-width:1100px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+
+/* başlık */
+.top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:26px 0 0}
+.mark{font-size:1.2rem;font-weight:600;text-decoration:none;letter-spacing:-.005em;font-variation-settings:"opsz" 24}
+.mark b{font-weight:600;color:var(--red)}
+.top-r{display:flex;align-items:baseline;gap:18px;font-size:.95rem;color:var(--muted)}
+.top-r a{text-decoration:none}
+.top-r a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.theme{font:inherit;color:inherit;background:none;border:0;padding:6px 2px;cursor:pointer}
+.theme:hover{color:var(--ink)}
+
+/* ana sayfa */
+.hero{padding:clamp(56px,10vw,120px) 0 clamp(28px,4vw,44px)}
+.hero h1{margin:0;font-weight:500;font-size:clamp(2.4rem,6.4vw,4.9rem);line-height:1.02;letter-spacing:-.022em;max-width:15ch;
+  font-variation-settings:"opsz" 72;text-wrap:balance}
+.hero p{margin:28px 0 0;font-size:clamp(1.1rem,1.6vw,1.28rem);line-height:1.55;color:var(--muted);max-width:56ch;text-wrap:pretty}
+
+.tape{position:relative;margin:clamp(18px,3vw,30px) 0 0}
+.tape svg{display:block;width:100%;height:clamp(170px,24vw,270px);overflow:visible}
+.tape .nums{position:absolute;inset:0;pointer-events:none}
+.tape .nums span{position:absolute;top:-2px;font-style:italic;font-size:1.05rem;color:var(--muted);transform:translateX(8px)}
+.draw{animation:reveal 2.4s cubic-bezier(.45,.05,.2,1) .15s both}
+@keyframes reveal{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+
+svg .p{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke;transition:stroke .25s,opacity .25s}
+svg .p.soon{stroke:var(--muted);stroke-dasharray:3 5;opacity:.8}
+svg .g{stroke:var(--rule);stroke-width:1;fill:none;vector-effect:non-scaling-stroke;transition:opacity .25s}
+svg .g.fork{stroke-dasharray:2 4}
+svg .g.med{stroke:var(--muted);opacity:.55}
+svg .div{stroke:var(--rule);stroke-width:1;vector-effect:non-scaling-stroke}
+svg[data-hl="1"] .p:not(.s1), svg[data-hl="2"] .p:not(.s2), svg[data-hl="3"] .p:not(.s3){opacity:.28}
+svg[data-hl="1"] .p.s1, svg[data-hl="2"] .p.s2, svg[data-hl="3"] .p.s3{stroke:var(--red);opacity:1}
+svg[data-hl="2"] .g, svg[data-hl="3"] .g{opacity:.3}
+
+.cols{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink);margin-top:0}
+.col{display:block;text-decoration:none;padding:18px 22px 26px 0;position:relative}
+.col + .col{padding-left:22px;border-left:1px solid var(--rule)}
+.col .n{display:block;font-size:2.6rem;line-height:1;font-weight:400;font-style:italic;color:var(--red);font-variation-settings:"opsz" 72}
+.col .who{display:block;margin-top:14px;font-size:.98rem;color:var(--muted)}
+.col .ans{display:block;margin-top:4px;font-size:1.42rem;line-height:1.18;font-weight:500;letter-spacing:-.01em;font-variation-settings:"opsz" 36;text-wrap:balance}
+.col .ttl{display:block;margin-top:12px;font-size:1.02rem;font-style:italic;line-height:1.35;color:var(--ink)}
+.col .rt{display:block;margin-top:14px;font-size:.92rem;color:var(--muted)}
+a.col:hover .ans, a.col:focus-visible .ans{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.col.soon .n,.col.soon .ans,.col.soon .ttl{color:var(--muted)}
+.col .rt .done{color:var(--red)}
+.caption{margin:30px 0 0;font-size:1rem;font-style:italic;color:var(--muted);max-width:60ch}
+
+.foot{margin-top:clamp(80px,12vw,140px);padding:26px 0 40px;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;font-size:.95rem;color:var(--muted)}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
+/* okuma sayfası */
+.bar{position:fixed;left:0;right:0;top:0;height:2px;background:var(--red);transform-origin:0 50%;transform:scaleX(0);z-index:5;pointer-events:none}
+.read{max-width:38rem;margin:0 auto}
+.mini{position:relative;margin:clamp(34px,6vw,64px) 0 0}
+.mini svg{display:block;width:100%;height:64px;overflow:visible}
+.mini .hit{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr)}
+.mini .hit a,.mini .hit span{display:block}
+.mini .hit a:hover{background:linear-gradient(to top,var(--soft),transparent)}
+.mini-l{display:flex;justify-content:space-between;margin-top:8px;font-size:.9rem;color:var(--muted)}
+.mini-l a{text-decoration:none}
+.mini-l a:hover{color:var(--ink)}
+
+.rhead{padding:clamp(36px,6vw,60px) 0 30px;border-bottom:1px solid var(--rule);margin-bottom:34px}
+.rhead .which{margin:0;font-size:1rem;color:var(--muted)}
+.rhead .which em{color:var(--red);font-style:italic}
+.rhead h1:focus{outline:none}
+.rhead h1{margin:12px 0 0;font-weight:500;font-size:clamp(2.1rem,5.2vw,3.3rem);line-height:1.06;letter-spacing:-.018em;font-variation-settings:"opsz" 72;text-wrap:balance}
+.rhead .deck{margin:22px 0 0;font-size:1.24rem;line-height:1.5;font-style:italic;color:var(--muted);text-wrap:pretty}
+.rhead .meta{margin:20px 0 0;font-size:.95rem;color:var(--muted)}
+
+.body{font-size:1.2rem;line-height:1.66;hanging-punctuation:first}
+.body p{margin:0 0 1.05em;text-wrap:pretty}
+.body > p:first-child{font-size:1.1em;line-height:1.6}
+.body h2{margin:2.3em 0 .55em;font-size:1.42rem;line-height:1.2;font-weight:600;letter-spacing:-.008em;font-variation-settings:"opsz" 36}
+.body h2::before{content:"";display:block;width:30px;height:2px;background:var(--red);margin-bottom:16px}
+
+.next{margin:64px 0 0;padding:28px 0 0;border-top:1px solid var(--ink)}
+.next .lbl{margin:0;font-size:1rem;color:var(--muted)}
+.next a.go{display:block;text-decoration:none;margin-top:10px}
+.next a.go .t{display:block;font-size:clamp(1.6rem,3.6vw,2.2rem);line-height:1.12;font-weight:500;letter-spacing:-.014em;font-variation-settings:"opsz" 60}
+.next a.go:hover .t{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+.next a.go .a{display:block;margin-top:8px;font-style:italic;color:var(--muted);font-size:1.1rem}
+.next .soon{margin:10px 0 0;font-size:1.2rem;line-height:1.55;text-wrap:pretty}
+.next .soon em{color:var(--red)}
+.next .back{display:inline-block;margin-top:30px;font-size:1rem;color:var(--muted);text-decoration:none}
+.next .back:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
+@media (max-width:760px){
+  .cols{grid-template-columns:1fr}
+  .col{padding:20px 0 24px}
+  .col + .col{padding-left:0;border-left:0;border-top:1px solid var(--rule)}
+  .col .n{font-size:2.1rem}
+  .top-r .home-link{display:none}
+  .body{font-size:1.13rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .draw{animation:none}
+  svg .p,svg .g{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="bar" id="bar" aria-hidden="true"></div>
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#/">Finansal Bilgiler <b>Okulası</b></a>
+    <div class="top-r">
+      <a class="home-link" href="https://mehmetcihatkeles.com" target="_blank" rel="noopener">Mehmet Cihat Keleş</a>
+      <button class="theme" id="theme" type="button">Gece</button>
+    </div>
+  </header>
+  <main id="main"></main>
+  <footer class="foot">
+    <span>Yazan: <a href="https://mehmetcihatkeles.com" target="_blank" rel="noopener">Mehmet Cihat Keleş</a></span>
+    <span>Kardeş okul: <a href="https://okula.mehmetcihatkeles.com" target="_blank" rel="noopener">Köpeksel Bilgiler Okulası</a></span>
+  </footer>
+</div>
+
+<script>
+/* ==========================================================================
+   YAZILAR
+   Yeni yazı eklemek için: aşağıdaki listede "hazir: false" olan kaydı bulun,
+   metni "govde" alanına yapıştırın ve "hazir: true" yapın. Ardından listenin
+   sonuna bir sonraki yazı için yeni bir "hazir: false" kaydı ekleyin.
+   Gövde kuralları: paragraflar arasında bir boş satır; ara başlıklar "## " ile
+   başlar; *yıldız arası* italik olur.
+   Not: Üstteki fiyat çizgisi üç bölümlüdür (1-2-3). Dördüncü yazıda çizgiye
+   yeni bir bölüm eklemek gerekecek.
+   ========================================================================== */
+const YAZILAR = [
+{
+  no: 1,
+  slug: "yercekimiyle-kavga-eden-adam",
+  kisi: "Roger Babson",
+  cevap: "Fiyatın bir merkezi vardır.",
+  baslik: "Yerçekimiyle Kavga Eden Adam ve Bir Dirgenin Hikâyesi",
+  spot: "Bugün her grafik platformunda üç tıkla çizilen Andrews Dirgeni'nin arkasında yarım asırlık bir zincir var. Zincir bir nehirde boğulan on üç yaşında bir kızla başlıyor. Sonra 1929 çöküşünü \"bilen\" bir istatistikçiden ve yöntemini mezarına götüren bir matematikçiden geçiyor. Hikâye çekici; kanıtlar ise daha mütevazı.",
+  hazir: true,
+  govde: `26 Ağustos 1893'te, Massachusetts'in balıkçı kasabası Gloucester'da, on üç yaşındaki Edith Low Babson nehirde yüzerken boğuldu. Ağabeyi Roger Ward Babson on sekiz yaşındaydı. Otobiyografisinde anlattığına göre Edith, onu son gördüğünde Chicago'daki Dünya Fuarı'na gitmek üzere olan ağabeyine bütün birikimini, iki doları vermişti.
+
+Babson bu ölümü elli beş yıl sonra, 1948'de, olağandışı bir cümleyle anlatacaktı. Herkes kız kardeşinin boğulduğunu söylüyordu. Oysa ona göre iyi bir yüzücü olan Edith yerçekimine karşı koyamamıştı; yerçekimi bir ejderha gibi gelip onu yakalamış ve dibe çekmişti. Denemenin başlığı tezini özetliyordu: "Yerçekimi: 1 Numaralı Düşmanımız." Bu metinde Babson olayı çocukken yaşadığını ve kaybettiğinin en büyük ablası olduğunu yazar. Oysa aile kayıtları Edith'in ondan beş yaş küçük olduğunu gösteriyor. Yarım asırlık bir yasın hafızayı nasıl biçimlendirdiğine dair küçük ama anlamlı bir iz.
+
+Bu cümleleri yazan kişi bir meczup değildi. MIT'den mühendislik diplomalı bir istatistikçiydi ve servetini piyasaları okuyarak kurmuştu. Babson College'ın kurucusuydu. 1940'ta Yasakçı Parti'nin başkan adayı oldu. Amerikan kamuoyunda ise en çok 1929 çöküşünü önceden haber veren adam olarak tanındı. Bugün kripto para grafiklerinde yaygın biçimde kullanılan bir teknik analiz aracının soy ağacı da, dolambaçlı bir yoldan, onun Newton hayranlığına bağlanıyor.
+
+## Newton'dan borsaya
+
+Babson'ın Newton ilgisi iki kolda ilerledi. Birincisi yerçekiminin kendisiydi; ona ileride döneceğiz. İkincisi hareketin üçüncü yasasıydı: Her etkiye eşit ve zıt bir tepki karşılık gelir. Babson bu ilkeyi fizikten çıkarıp ekonomiye taşıdı. Refah dönemlerinin ardından, büyüklükleri orantılı depresyonlar gelmeliydi.
+
+Fikrin kökeni tek bir dehaya dayanmıyor. 1907 paniği sırasında Babson New York'ta tahvil araştırmaları satıyordu. Deneyimli profesyonellerin uğradığı kayıplar onu sarstı. Bunun üzerine MIT'deki eski hocası, mühendislik profesörü George F. Swain ile çalışmaya başladı. Babson College'ın kendi tarihçesi de Babsonchart'ın bu işbirliğinden doğduğunu yazıyor. Aktarıldığına göre, Babson'ın pik demir, mısır ve domuz fiyatlarından oluşturduğu zikzaklı bileşik endeksin ortasından bir "normal çizgi" geçiren Swain'di. Grafiğin varsayımı basitti: Ekonominin bu çizginin üstünde kaldığı alan, er ya da geç altında kalacağı bir alanla dengelenmeliydi.
+
+Babson 1904'te, Wellesley Hills'teki evinden yönettiği Babson İstatistik Kurumu'nu kurmuştu. Tahvil ve hisse analizlerini bankalara ve yatırımcılara bülten olarak satıyordu. Babsonchart bu bültenlerin vitrin ürünü oldu. Bugünkü ölçütlerle kaba bir yöntemdi. Yine de "tek bakışta" okunabilen ilk ekonomik göstergelerden biri sayılıyor.
+
+## "Er ya da geç bir çöküş geliyor"
+
+5 Eylül 1929'da Babson, Wellesley'deki Babson Enstitüsü kampüsünde düzenlenen 16. Ulusal İş Konferansı'nda kürsüye çıktı. Söylediği cümle bir gün içinde efsaneleşti: Er ya da geç bir çöküş geliyordu ve bu çöküş müthiş olabilirdi. Sözler öğleden sonra Dow Jones haber bandına düştü. Günün son saatinde AT&T, Westinghouse ve U.S. Steel sert değer kaybettiler. Dow Jones Sanayi Endeksi o gün yüzde 2,6 civarında geriledi. Basın bu düşüşe "Babson Kırılması" adını verdi.
+
+Hikâyenin genellikle anlatılmayan yanı şu: Babson aynı uyarıyı en az iki yıldır yapıyordu. O günkü konuşmasında da geçen yıl ve ondan önceki yıl söylediklerini tekrarladığını vurguladı. Yıllarca kıyamet haberi veren biri sonunda haklı çıktığında, bunun bir yöntemin zaferi mi yoksa istatistiksel bir kaçınılmazlık mı olduğunu ayırmak kolay değil.
+
+Piyasa da o eylülde ona pek inanmadı. Pek çok yatırımcı düşüşü "sağlıklı bir düzeltme" ve alım fırsatı olarak gördü. Chicago Tribune ekonomistlerin ve Wall Street yöneticilerinin itirazlarını yayımladı; Babson'ın vatanseverliği bile sorgulandı. Döneminin en ünlü iktisatçısı Irving Fisher, Babson'a yanıt niteliğindeki konuşmasında 15 Ekim'de hisse fiyatlarının kalıcı bir yüksek düzlüğe ulaşmış göründüğünü söyledi. On üç gün sonra, 28 Ekim 1929 Kara Pazartesi'sinde Dow tek günde yaklaşık yüzde 13 değer kaybetti. Büyük Buhran ardından gelen yıllar boyunca yayılarak derinleşti.
+
+## Beyaz Saray'dan gelen soru ve kayıp formül
+
+Hikâyenin en çok tekrarlanan ve en az belgelenen kısmı burada başlıyor. Anlatıya göre 1933'te göreve gelen Franklin D. Roosevelt, Amerikan borsalarının önümüzdeki yıllardaki seyri için Babson'dan bir tahmin istedi. Babson da işi, o dönemde neredeyse tanınmayan matematikçi George Marechal'e havale etti.
+
+Marechal Aralık 1933'te 1933-1948 dönemini kapsayan on beş yıllık bir Dow Jones projeksiyonu hazırladı. Tahminine o kadar güveniyordu ki grafiğin telif hakkını önceden aldı. Grafiğin sonraki versiyonlarında üstte Marechal'in öngörüsü, altta endeksin gerçekleşen seyri yer alıyor ve iki eğri çarpıcı biçimde örtüşüyor. Bu on beş yılın içinde bir dünya savaşının bulunduğunu hatırlamak, örtüşmeyi daha da şaşırtıcı kılıyor.
+
+Marechal'in yöntemi bilinmiyor; formülü onunla birlikte öldü. Geriye kalan izler, onun da Babson'ın normal çizgisinin bir türevini kullandığını düşündürüyor. Arkadaşı Alan Andrews grafiğin dönüş noktalarını işaretlemişti. Bu işaretler, bugün "medyan çizgi" denen yapının Marechal'in çalışmalarında zaten var olduğuna işaret ediyor.
+
+Burada gazetecilik açısından bir çekince koymak gerekiyor. Roosevelt talebi de, Marechal'in isabeti de büyük ölçüde Andrews ve onun çevresinin aktarımlarıyla bugüne ulaştı. Bazı kaynaklar bu bölümü açıkça "efsane" diye anıyor. Tahminin sonradan revize edilip edilmediği ya da başka tahminler unutulurken yalnızca tutanın mı hatırlandığı, bağımsız bir kaynakla yanıtlanmış sorular değil.
+
+## Mühendis, milyon dolar ve dirgen
+
+Zincirin üçüncü halkası Dr. Alan Hall Andrews. Doğum tarihi bilinmiyor; 1985'te öldü. Babası bir aracı kurum sahibiydi. Andrews MIT'de mühendislik, ardından Harvard'da eğitim gördü. Aktarılan bir hikâyeye göre babası ondan bir yılda bir milyon dolar kazanmasını istedi. Andrews bu hedefi bir yılda tutturamadı, ama iki yılda emtia ticaretinden bir milyon dolar kazandı. Daha sonra Miami Üniversitesi'nde inşaat mühendisliği dersleri verdi.
+
+Andrews, Babson'ın seminerlerinden birinde onunla tanıştı ve etki-tepki tekniklerini doğrudan ondan öğrendi. Emekliliğinde bu birikimi bir eğitim programına dönüştürdü. Hocasına saygısından kursunu "Etki-Tepki Kursu" diye adlandırdı. 1960'lar ve 70'lerde bu kursu 1.500 dolara sattı. Seminerlerine New York ve Chicago borsalarının pit tüccarları katıldı. Anlatıldığına göre aracın bugünkü adını Andrews'un kendisi değil, tahıl piyasasında işlem yapan öğrencileri koydu: "Andrews'un Dirgeni."
+
+Dirgenin kuruluşu basit. Grafikte art arda üç salınım noktası seçilir. Yükselen bir trendde bunlar bir dip (P0), ardından gelen tepe (P1) ve daha yüksek bir dip (P2) olur. P0'dan, P1 ile P2'nin tam orta noktasına doğru bir çizgi uzatılır; bu medyan çizgidir. P1 ve P2'den bu çizgiye paralel iki çizgi daha çekilir ve ortaya üç dişli bir kanal çıkar. Yöntemin temel varsayımı Babson'dan miras: Fiyat zamanın büyük kısmında medyan çizgiye doğru çekilir, kanalın kenarlarına ulaştığında ise tepki verme eğilimi taşır. Bu bir kural değil, bir eğilim iddiasıdır. Andrews'un kendi öğretisinde bile fiyatın medyan çizgiye hiç ulaşamadan dönmesi ayrı bir uyarı işareti sayılır.
+
+Andrews öğrencilerinin gözlemlerini yöntemine katmakla ve bunları onların adıyla anmakla bilinirdi. Schiff varyasyonu böyle doğdu; adını bu düzeltmeyi Andrews'a getiren New York'lu tüccar Jerome Schiff'ten alıyor. Schiff Dirgeni'nde başlangıç noktası, zamanda yerinde kalarak fiyatta P0 ile P1 arasının yarısına kaydırılır. Böylece kanal daha yatık hale gelir. Sonradan başlangıç noktasını hem fiyatta hem zamanda yarı yola taşıyan "değiştirilmiş Schiff" versiyonu da gelişti. Andrews benzer biçimde bir başka öğrencisinin adını taşıyan "Hagopian çizgileri"ni de sisteme ekledi.
+
+## Ejderhayla ikinci karşılaşma
+
+1947'de Babson yetmiş iki yaşındaydı. Kızı Edith'in (adı, yarım asır önce kaybettiği kız kardeşinin adıydı) on yedi yaşındaki oğlu Michael, bir motorbottan düşen arkadaşını kurtarırken boğuldu. Babson aynı denemede torununu da yerçekimi "ejderhası"nın aldığını yazdı.
+
+Bir yıl sonra, 1948'de, Yerçekimi Araştırma Vakfı'nı kurdu. Amacı açıktı: yerçekimine karşı bir kalkanın yollarını aramak. Vakıf New Hampshire'daki New Boston kasabasına yerleşti. Gerekçe, MIT'li uzmanların Boston'a atılabilecek bir bombadan etkilenmeyecek bir yer önermesiydi. Vakfın başlattığı yıllık deneme yarışması ise beklenmedik bir itibar kazandı. Zamanla kalkan arayışı bırakıldı ve yerini yerçekimini anlama çabası aldı. Yarışmayı kazananlar arasında sonradan Nobel Fizik Ödülü alan en az altı isim bulunuyor.
+
+## Hikâyenin söylediği ve söylemediği
+
+Bir nehir kazasından doğan yas bir fizik yasasına saplantıya dönüştü. Saplantı bir ekonomik göstergeye, gösterge bir kehanete, kehanet de yarım asır sonra tahıl tüccarlarının elinde üç dişli bir çizim aracına evrildi. Anlatı olarak kusursuz. Ama tam da bu kusursuzluk dikkatli okunmayı gerektiriyor.
+
+Birincisi, Newton'un yasaları fiyatlara uygulanmaz. Hisse senedinin kütlesi, momentumu ya da onu dibe çeken bir kuvvet yoktur. Babson'ın fizik dili bir metafordu; yöntemin gücü, olsa olsa piyasa katılımcılarının davranışlarındaki tekrar eden kalıplardan gelebilir. Babson College'ın kendi tarihçesi bile Babsonchart'ın kusurlu bir araç olduğunun sonradan anlaşıldığını kabul ediyor.
+
+İkincisi, dirgen bir tahmin aracı değil, bir çerçeveleme aracıdır. Hangi üç noktanın "doğru" salınım noktaları olduğu çoğu zaman ancak geriye dönüp bakıldığında belli olur. Bu da geçmiş grafiklerde aracın olduğundan daha isabetli görünmesine yol açar.
+
+Üçüncüsü ve en önemlisi, teknik analizin genel kârlılığına dair akademik kanıtlar karışık. Cheol-Ho Park ve Scott Irwin'in 2007'de Journal of Economic Surveys'de yayımlanan kapsamlı derlemesi 95 modern çalışmayı inceledi. Bunların 56'sı olumlu, 20'si olumsuz, 19'u karışık sonuç buldu. Ancak yazarlar olumlu sonuçların büyük bölümünün veri madenciliği, kuralların sonradan seçilmesi, risk ve işlem maliyetlerinin doğru hesaplanamaması gibi yöntemsel sorunlar taşıdığına dikkat çekti.
+
+Buna rağmen dirgenin bugün hâlâ yaygın biçimde kullanılmasının makul bir açıklaması var. Onlarca gösterge arasında boğulan bir yatırımcıya fiyatı tek bir yapı içinde görme imkânı veriyor: Trendin eğimi, fiyatın bu eğime göre nerede durduğu ve kanalın kırılıp kırılmadığı. Bitcoin gibi yüksek oynaklıklı piyasalarda bu sadelik bir tahmin gücü değil ama bir disiplin sağlıyor. Belki de Babson'dan Andrews'a uzanan yolun gerçek mirası budur. Piyasanın geleceğini bilmek değil, gürültünün içinde bir düzen arama inadı.`
+},
+{
+  no: 2,
+  slug: "sarhosun-yuruyusu",
+  kisi: "Louis Bachelier",
+  cevap: "Fiyat hiçbir yere gitmez.",
+  baslik: "Sarhoşun Yürüyüşü",
+  spot: "Aynı gün, okyanusun iki yakasında iki adam. Biri fiyatın bir merkezi olduğuna inanıp servet kurdu. Öteki fiyatın hiçbir yere gitmediğini kanıtlamaya çalıştı ve unutuldu. Yarım asır sonra kazanan taraf değişti.",
+  hazir: true,
+  govde: `29 Mart 1900 Perşembe günü, Paris'te Sorbonne'un bir salonunda otuz yaşında bir adam üç kişilik bir jürinin karşısına çıktı. Jürinin başında Fransa'nın, belki de dünyanın o dönemdeki en ünlü matematikçisi Henri Poincaré oturuyordu. Adayın adı Louis Bachelier'ydi. Tezinin başlığı ise bir matematik salonunda o güne kadar pek duyulmamış türdendi: "Spekülasyon Teorisi."
+
+Aynı gün Atlantik'in öbür yakasında, yirmi dört yaşındaki Roger Babson, Grace Margaret Knight ile evleniyordu. Bu serinin ilk yazısının kahramanı olan Babson, o sırada Boston'da bir yatırım firmasında tahvil satıyordu. Babsonchart henüz doğmamıştı; İstatistik Kurumu'nu kurmasına dört yıl vardı. Ama piyasaya dair temel inancı şekillenmeye başlamıştı: Fiyatın bir merkezi vardı ve fiyat her zaman o merkeze geri dönerdi.
+
+Paris'teki salonda savunulan tez ise bunun tam tersini söylüyordu.
+
+## Borsa sütunlarının altında
+
+Bachelier 11 Mart 1870'te Le Havre'da doğdu. Babası şarap tüccarıydı, aynı zamanda Venezuela'nın Le Havre'daki konsolos yardımcısıydı. Anne tarafından dedesi bölgenin tanınmış bankerlerinden biriydi. Yani genç Louis para, fiyat ve ticaretin konuşulduğu bir evde büyüdü.
+
+Lise diplomasını aldıktan kısa süre sonra annesini ve babasını kaybetti. Kız kardeşine ve üç yaşındaki erkek kardeşine bakmak ve aile işini devralmak zorunda kaldı. Eğitimi yarıda kaldı; ardından askerlik araya girdi. Ancak bu kayıp yıllar ona üniversitenin veremeyeceği bir şey kazandırdı: piyasaların nasıl işlediğine dair pratik bir bilgi. Paris'e, Sorbonne'a 1892'de, yirmi iki yaşında geldiğinde sınıf arkadaşlarından yaşça büyüktü ve notları parlak değildi. Ama onların hiçbirinin bilmediği bir şeyi biliyordu. Borsa'nın gürültülü dünyasını içeriden tanıyordu.
+
+Tezinin konusu da buradan çıktı. Bachelier, Paris Borsası'nda işlem gören Fransız devlet tahvillerinin, yani "rant"ların ve bunlara bağlı vadeli sözleşmelerle opsiyonların fiyatlarını inceliyordu. Sorusu basitti ama cüretkârdı: Fiyatların bir sonraki hareketi matematikle tarif edilebilir miydi?
+
+## Fiyat hiçbir yere gitmez
+
+Bachelier'nin cevabı, çağdaşlarının çoğunun duymak istediği cevap değildi. Fiyatı belirleyen sayısız etken vardı: siyasi olaylar, beklentiler, söylentiler, alıcıların ve satıcıların ruh hali. Bunların hepsini hesaba katmak imkânsızdı. Ama Bachelier'ye göre buna gerek de yoktu. Herhangi bir anda piyasa, bildiği her şeyi zaten fiyata yansıtmıştı. Dolayısıyla piyasa o anda ne bir yükselişe ne de bir düşüşe inanıyordu. En olası fiyat, şimdiki fiyattı. Sonraki hareket yukarı da olabilirdi, aşağı da; ve bu, geçmişte ne olduğundan bağımsızdı.
+
+Bu fikrin en rahatsız edici sonucu da tezin içindeydi: Bir spekülatörün beklenen kazancı sıfırdır. Piyasayı sürekli yenen bir yöntem, en azından matematiksel olarak, var olamazdı.
+
+Bugün bu fikre "rastlantısal yürüyüş" diyoruz. En bilinen benzetmesi de sarhoş bir adamın yürüyüşüdür. Sarhoş bir sonraki adımını nereye atacağını bilmez. Her adım bir öncekinden bağımsızdır. Zaman geçtikçe başladığı noktadan uzaklaşır, ama nereye doğru uzaklaşacağını kimse söyleyemez. Babson'ın dünyasında fiyat bir merkeze bağlı bir sarkaçtı. Bachelier'ninkinde ise ipi kopmuş bir sarkaç, belki de hiç ipi olmamış bir yürüyüştü.
+
+Tezin matematiği, fikrinden de öndeydi. Bachelier fiyatların bu düzensiz hareketini tarif ederken, bugün Brown hareketi denen sürecin matematiğini kurdu. Suda asılı polen tanelerinin titreşimini açıklayan bu süreci Albert Einstein ancak beş yıl sonra, 1905'te fizik dünyasının gündemine taşıyacaktı. Bachelier aynı matematiğe fizikten değil, borsadan gelerek ulaşmıştı. Tez ayrıca opsiyonların fiyatlanması için bir formül de içeriyordu. Bu formül, yetmiş üç yıl sonra Nobel ödüllü Black-Scholes formülüyle ulaşılan sonuca şaşırtıcı biçimde yakındı.
+
+## "Honorable"
+
+Jüri tezi kabul etti ve "honorable" notunu verdi. Bu not, hikâyenin en çok yanlış anlaşılan kısmı.
+
+Yaygın anlatıya göre bu, Bachelier'nin kariyerini daha başlamadan bitiren soğuk bir karşılanmaydı. Akademik kapıları açan not "très honorable"dı ve Bachelier onu alamamıştı. Anlatının bir bölümü doğru: Bu not Bachelier'ye seçkin bir akademik kadronun yolunu açmadı. Ama tarihçilerin bir kısmı resmi başka yerden okuyor. Poincaré'nin raporu olumluydu; Bachelier'nin bazı yaklaşımlarını çok özgün bulmuştu. Tez, Fransa'nın en prestijli bilim dergilerinden birinde yayımlanmaya da layık görüldü. Bachelier'nin yüzüncü yıl dönümü için yazılan bir makalenin yazarlarına göre "honorable", özünde matematiğin dışında kalan ve bazı argümanları titizlikten uzak bir tez için verilebilecek en yüksek nottu.
+
+Yani Bachelier'yi yenen şey bir not değildi. Konusuydu. Borsa, 1900'lerin Fransız matematiğinde ciddiye alınacak bir konu değildi. Daha sonra Bachelier'nin kariyerinde belirleyici rol oynayacak matematikçi Paul Lévy'nin ise, rivayete göre, çalışma hakkında "finansa fazla kaçmış" diye not düştüğü anlatılır.
+
+## Geçici kadrolar
+
+Tezin ardından gelen yıllar Bachelier için hem verimli hem hayal kırıklığıyla geçti. Olasılık kuramı üzerine prestijli dergilerde makaleler yayımladı. 1909'da Sorbonne'da serbest öğretim üyesi oldu. 1914'te yayımladığı "Oyun, Şans ve Rastlantı" adlı kitabı altı binden fazla sattı. Tam kalıcı bir profesörlüğe ulaşacakken Birinci Dünya Savaşı patladı ve kırk dört yaşındaki Bachelier er olarak orduya alındı.
+
+Savaştan sonra hayatı bir geçici kadrodan ötekine geçerek geçti: Besançon, Dijon, Rennes. 1920'de evlendi, kısa süre sonra dul kaldı. 1926'da Dijon'da kalıcı bir kadroya başvurduğunda başvurusu reddedildi. Neden, Paul Lévy'nin Bachelier'nin makalelerinden birini yanlış okuyup içinde hata bulduğunu bildirmesiydi. Lévy, anlatıldığına göre, Bachelier'nin çalışmasını aslında pek tanımıyordu. Bachelier öfkeden deliye döndü. Lévy hatasını yıllar sonra anladı ve iki adam barıştı. Ama olan olmuştu.
+
+Bachelier sonunda 1927'de, elli yedi yaşında, Besançon Üniversitesi'nde ilk kalıcı kadrosuna kavuştu. On yıl orada ders verdi ve emekli oldu. 28 Nisan 1946'da Bretagne kıyısındaki Saint-Servan-sur-Mer'de öldü. Arkasında adını ekonomistlerin hiç duymadığı bir tez bıraktı.
+
+Aynı yıllarda Babson'ın hayatı ise tam tersi yönde ilerliyordu. 1929'da çöküşü haber veren adam olarak ünlendi, kolejler kurdu, 1940'ta başkan adayı oldu. Fiyatın bir merkezi olduğuna inanan adam zengin ve ünlüydü. Fiyatın bir merkezi olmadığını söyleyen adam ise yoksul ve adsız.
+
+## Kartpostallar
+
+Hikâyenin ikinci yarısı bir kartpostalla başlıyor, ya da en azından öyle anlatılıyor.
+
+1950'lerin ortasında, Yale'de çalışan istatistikçi Leonard "Jimmie" Savage, bir kütüphanede Bachelier'nin kitaplarından birine rastladı. Matematikçiler Bachelier'yi tamamen unutmuş değildi. Andrey Kolmogorov onun çalışmasını Paul Lévy'ye bizzat göstermişti. William Feller ise Brown hareketi için "Wiener-Bachelier süreci" adını önermişti. Ama ekonomistler onu hiç duymamıştı. Savage bunu değiştirmek istedi ve ekonomist tanıdıklarına bir düzine kadar kartpostal gönderdi. Paul Samuelson'ın sonradan hatırladığı biçimiyle mesaj kabaca şuydu: İçinizde Bachelier adında bir Fransız profesörün spekülasyon teorisi üzerine yazdığı kitabı bilen var mı?
+
+Samuelson'ın anlatısına göre bu oltaya takılan tek balık kendisiydi. MIT'nin matematik kütüphanesinde Savage'ın sözünü ettiği kitap yoktu, ama 1900 tarihli tezi buldu. Bu küçük ayrıntının serimiz için ayrı bir anlamı var. Babson'ın mühendislik okuduğu ve Newton'un etki-tepki yasasını piyasalara taşıma fikrinin doğduğu okul olan MIT, yarım asır sonra o fikrin karşı tezinin yeniden doğduğu yer oldu.
+
+Samuelson tezin önemini hemen gördü, ama bir kusurunu da düzeltti. Bachelier'nin modelinde fiyat, sıfırın altına düşebiliyordu. Oysa hiçbir hisse ya da tahvil sıfırdan ucuza satılamaz. Samuelson fiyatın kendisi yerine değişim oranlarını rastlantısal kabul eden "geometrik" bir versiyon önerdi. Tez 1964'te İngilizceye çevrildi. Ardından gelen on yıllar, Bachelier'nin fikrini modern finans kuramının merkezine taşıdı. Eugene Fama'nın etkin piyasalar hipotezi ve 1973'te yayımlanan Black-Scholes opsiyon fiyatlama formülü, Paris'teki o salonda savunulan tezin mirasçıları oldu.
+
+## Aynı ekran, iki cevap
+
+Serinin sorusu şuydu: Fiyat nedir, nereye gider, izini nasıl süreriz?
+
+29 Mart 1900'de iki adam, birbirinden habersiz, bu soruya iki zıt cevap verdi. Babson'a göre fiyat bir merkezin etrafında salınan bir sarkaçtı. Merkezden uzaklaştıkça ona geri döner, ve merkezi çizen kişi fiyatın izini sürebilirdi. Bachelier'ye göre ise fiyat sarhoş bir adamdı. Bir sonraki adımı bir öncekinden bağımsızdı ve izini sürmeye çalışan kişi, uzun vadede yazı-tura atan birinden fazlasını kazanamazdı.
+
+Hayattayken kazanan Babson oldu. Ölümlerinden sonra akademi Bachelier'yi seçti. Ekranın başındaki trader ise çoğu zaman ikisini aynı anda yaşar. Bir gün fiyat çizdiği kanalın medyan çizgisine kusursuzca dokunur ve Babson haklı görünür. Ertesi gün hiçbir kanalın açıklayamayacağı bir hareketle her şey dağılır ve Bachelier gülümser.
+
+Ama hikâye burada bitmiyor. 1960'ların başında, pamuk fiyatlarının yüz yıllık kayıtlarına bakan bir matematikçi, iki adamın da aynı şeyi hafife aldığını gösterecekti: Fiyatın ne kadar vahşi olabileceğini. Onun adı Benoit Mandelbrot'tu. Ve serinin bir sonraki yazısı onun hikâyesi.`
+},
+{
+  no: 3,
+  slug: "mandelbrot",
+  kisi: "Benoit Mandelbrot",
+  cevap: "Fiyat sanıldığından vahşidir.",
+  baslik: "",
+  spot: "Pamuk fiyatlarının yüz yıllık kayıtlarına bakan bir matematikçi, Babson'ın da Bachelier'nin de aynı şeyi hafife aldığını gösterdi.",
+  hazir: false,
+  govde: ``
+}
+];
+
+/* ==========================================================================
+   FİYAT ÇİZGİSİ — her bölüm, o yazının fiyata verdiği cevapla çizilir:
+   1 merkeze dönen salınım, 2 rastlantısal yürüyüş, 3 kalın kuyruklu sıçramalar.
+   ========================================================================== */
+const W = 1200, H = 260, N = 110;
+function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function gauss(r){let u=0,v=0;while(!u)u=r();while(!v)v=r();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
+const LINE = (function(){
+  const r = rng(1900), ys = [], med = [];
+  const A = 2.6, slope = .045;
+  let y = 0;
+  for (let i=0;i<N;i++){ const mu = i*slope; med.push(mu); y = mu + A*Math.sin(i*.2) + gauss(r)*.38; ys.push(y); }
+  for (let i=0;i<N;i++){ y += gauss(r)*.5; ys.push(y); }
+  for (let i=0;i<N;i++){ const c = Math.tan(Math.PI*(r()-.5))*.3; y += Math.max(-4.5, Math.min(4.5, c)); ys.push(y); }
+  const all = ys.concat(med.map(m=>m+A), med.map(m=>m-A));
+  const lo = Math.min(...all), hi = Math.max(...all), pad = 18;
+  const Y = v => (H - pad - (v-lo)/(hi-lo)*(H-2*pad)).toFixed(1);
+  const X = i => (i/(3*N-1)*W).toFixed(1);
+  const seg = (s)=>{ const a = s===0?0:s*N-1, b = (s+1)*N-1; let d=""; for(let i=a;i<=b;i++) d += (i===a?"M":"L")+X(i)+" "+Y(ys[i]); return d; };
+  const g = (off)=>"M"+X(0)+" "+Y(med[0]+off)+"L"+X(N-1)+" "+Y(med[N-1]+off);
+  return { seg, med:g(0), up:g(A), dn:g(-A), x1:X(N-1), x2:X(2*N-1) };
+})();
+
+function tapeSVG(opts){
+  const hl = opts.hl ? ` data-hl="${opts.hl}"` : "";
+  const soon = YAZILAR.map(y=>!y.hazir);
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"${hl}>
+    <line class="div" x1="${LINE.x1}" y1="0" x2="${LINE.x1}" y2="${H}"/>
+    <line class="div" x1="${LINE.x2}" y1="0" x2="${LINE.x2}" y2="${H}"/>
+    ${opts.guides ? `<path class="g med" d="${LINE.med}"/><path class="g fork" d="${LINE.up}"/><path class="g fork" d="${LINE.dn}"/>` : ""}
+    <path class="p s1${soon[0]?" soon":""}" d="${LINE.seg(0)}"/>
+    <path class="p s2${soon[1]?" soon":""}" d="${LINE.seg(1)}"/>
+    <path class="p s3${soon[2]?" soon":""}" d="${LINE.seg(2)}"/>
+  </svg>`;
+}
+
+/* ==========================================================================
+   YARDIMCILAR
+   ========================================================================== */
+const $ = s => document.querySelector(s);
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const inline = s => esc(s).replace(/\*([^*]+)\*/g,"<em>$1</em>");
+const words = y => y.govde.trim().split(/\s+/).length;
+const minutes = y => Math.max(1, Math.round(words(y)/220));
+const SIRA = ["birinci","ikinci","üçüncü","dördüncü","beşinci","altıncı","yedinci","sekizinci","dokuzuncu","onuncu"];
+const sira = n => SIRA[n-1] || (n+".");
+const store = {
+  get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+  set(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+};
+const isRead = y => store.get("fbo-okundu-"+y.slug) === "1";
+function render(md){
+  return md.trim().split(/\n\s*\n/).map(b=>{
+    b = b.trim();
+    if (b.startsWith("## ")) return `<h2>${inline(b.slice(3))}</h2>`;
+    return `<p>${inline(b)}</p>`;
+  }).join("\n");
+}
+
+/* ==========================================================================
+   SAYFALAR
+   ========================================================================== */
+let firstHome = true;
+function home(){
+  document.title = "Finansal Bilgiler Okulası";
+  const cols = YAZILAR.slice(0,3).map(y=>{
+    const inner = `<span class="n">${y.no}</span>
+      <span class="who">${esc(y.kisi)}</span>
+      <span class="ans">${esc(y.cevap)}</span>
+      ${y.hazir ? `<span class="ttl">${esc(y.baslik)}</span>` : ""}
+      <span class="rt">${y.hazir ? (isRead(y) ? `<span class="done">Okundu</span>, ${minutes(y)} dakikalık okuma` : `${minutes(y)} dakikalık okuma`) : "Hazırlanıyor"}</span>`;
+    return y.hazir
+      ? `<a class="col" href="#/yazi/${y.slug}" data-n="${y.no}">${inner}</a>`
+      : `<div class="col soon" data-n="${y.no}">${inner}</div>`;
+  }).join("");
+  $("#main").innerHTML = `
+    <section class="hero">
+      <h1>Fiyat nedir, nereye gider, izini nasıl süreriz?</h1>
+      <p>Bu bir yazı dizisi. Her yazı, bu soruya cevap vermeye çalışmış bir insanın hikâyesi: aynı zikzaklı çizgiye bakıp her biri başka bir şey görmüş tüccarlar, istatistikçiler, matematikçiler. Yazılar kendi başına da okunur, ama sırayla okunmak üzere yazıldı.</p>
+    </section>
+    <figure class="tape" style="margin-left:0;margin-right:0">
+      <div class="${firstHome ? "draw" : ""}" id="tapebox">${tapeSVG({guides:true})}</div>
+      <div class="nums" aria-hidden="true"><span style="left:0">1</span><span style="left:33.33%">2</span><span style="left:66.66%">3</span></div>
+    </figure>
+    <nav class="cols" aria-label="Dizinin yazıları">${cols}</nav>
+    <p class="caption">Yukarıdaki çizgi dizinin kendisi. Her bölümü, o yazının fiyata verdiği cevaba göre çizildi: önce bir merkezin etrafında salınıyor, sonra sarhoş gibi yürüyor, sonra kopup sıçrıyor.</p>`;
+  firstHome = false;
+  const svg = $("#tapebox svg");
+  document.querySelectorAll(".col").forEach(c=>{
+    const on = ()=>svg.setAttribute("data-hl", c.dataset.n), off = ()=>svg.removeAttribute("data-hl");
+    c.addEventListener("mouseenter", on); c.addEventListener("mouseleave", off);
+    c.addEventListener("focus", on); c.addEventListener("blur", off);
+  });
+}
+
+function article(y){
+  document.title = y.baslik + " | Finansal Bilgiler Okulası";
+  const next = YAZILAR.find(z=>z.no===y.no+1);
+  const hits = YAZILAR.slice(0,3).map(z=> z.hazir && z.no!==y.no
+    ? `<a href="#/yazi/${z.slug}" aria-label="${z.no}. yazı: ${esc(z.baslik)}"></a>` : `<span></span>`).join("");
+  let end;
+  if (next && next.hazir){
+    end = `<p class="lbl">Dizide sıradaki, ${sira(next.no)} yazı</p>
+      <a class="go" href="#/yazi/${next.slug}"><span class="t">${esc(next.baslik)}</span><span class="a">${esc(next.kisi)}: ${esc(next.cevap)}</span></a>`;
+  } else if (next){
+    end = `<p class="lbl">Dizide sıradaki, ${sira(next.no)} yazı</p>
+      <p class="soon"><em>${esc(next.kisi)}</em> hazırlanıyor. ${esc(next.spot)}</p>`;
+  } else {
+    end = `<p class="lbl">Dizinin şimdilik son yazısı</p>`;
+  }
+  $("#main").innerHTML = `
+    <article class="read">
+      <div class="mini">
+        ${tapeSVG({hl:y.no, guides:y.no===1})}
+        <div class="hit">${hits}</div>
+      </div>
+      <div class="mini-l"><a href="#/">Dizinin başı</a><span>${y.no} / ${YAZILAR.length}</span></div>
+      <header class="rhead">
+        <p class="which">Dizinin ${sira(y.no)} yazısı, <em>${esc(y.kisi)}</em></p>
+        <h1 tabindex="-1">${esc(y.baslik)}</h1>
+        <p class="deck">${inline(y.spot)}</p>
+        <p class="meta">${minutes(y)} dakikalık okuma</p>
+      </header>
+      <div class="body">${render(y.govde)}</div>
+      <footer class="next">${end}<br><a class="back" href="#/">Dizinin başına dön</a></footer>
+    </article>`;
+  window.scrollTo(0,0);
+  const h = $(".rhead h1"); if (h) h.focus({preventScroll:true});
+}
+
+function route(){
+  const m = location.hash.match(/^#\/yazi\/([\w-]+)/);
+  const y = m && YAZILAR.find(z=>z.slug===m[1] && z.hazir);
+  current = y || null;
+  if (y) article(y); else { home(); window.scrollTo(0,0); }
+  progress();
+}
+
+let current = null;
+function progress(){
+  const bar = $("#bar");
+  if (!current){ bar.style.transform = "scaleX(0)"; return; }
+  const body = $(".body"); if (!body) return;
+  const top = body.getBoundingClientRect().top + scrollY - innerHeight*.3;
+  const end = body.getBoundingClientRect().bottom + scrollY - innerHeight;
+  const p = Math.max(0, Math.min(1, (scrollY - top) / Math.max(1, end - top)));
+  bar.style.transform = `scaleX(${p})`;
+  if (p > .92) store.set("fbo-okundu-"+current.slug, "1");
+}
+addEventListener("scroll", progress, {passive:true});
+addEventListener("resize", progress);
+addEventListener("hashchange", route);
+
+/* gece/gündüz */
+(function(){
+  const root = document.documentElement, btn = $("#theme");
+  const saved = store.get("fbo-tema"); if (saved) root.dataset.theme = saved;
+  const dark = ()=> root.dataset.theme ? root.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  const label = ()=>{ btn.textContent = dark() ? "Gündüz" : "Gece"; };
+  btn.addEventListener("click", ()=>{ root.dataset.theme = dark() ? "light" : "dark"; store.set("fbo-tema", root.dataset.theme); label(); });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", label);
+  label();
+})();
+
+route();
+</script>
+</body>
+</html>
