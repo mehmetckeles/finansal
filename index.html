@@ -194,7 +194,10 @@ a.col:hover .ans, a.col:focus-visible .ans{text-decoration:underline;text-decora
    sayfasında, kendi fiyat çizgisiyle durur. Ana sayfada diziler burada
    yazıldıkları sırayla görünür.
 
-   YENİ DİZİ: Listenin sonuna yeni bir dizi kaydı ekleyin (no, slug, ad, soru,
+   OKUL_SORUSU ve OKUL_GIRISI sitenin kimliğidir; giriş sayfasının başında
+   durur. Girişin sonuna, vitrindeki dizinin adı ve "ozet" alanı eklenir.
+
+   YENİ DİZİ: Listenin sonuna yeni bir dizi kaydı ekleyin (no, slug, ad, ozet,
    giris, durum, tohum, yazilar). "tohum" çizginin biçimini belirleyen bir
    sayıdır; her diziye farklı bir sayı verin. İsteğe bağlı "cizgiNotu",
    dizi sayfasında çizginin altındaki açıklamanın ilk yarısıdır.
@@ -216,13 +219,16 @@ a.col:hover .ans, a.col:focus-visible .ans{text-decoration:underline;text-decora
    belli bir gidiş), "dalga" (iç içe dalgalar). Çizgi, sütunlar ve yazı
    içindeki küçük çizgi yazı sayısına göre kendiliğinden büyür.
    ========================================================================== */
+const OKUL_SORUSU = "Fiyat nedir, nereye gider, izini nasıl süreriz?";
+const OKUL_GIRISI = "Finansal Bilgiler Okulası bu soru etrafında kurulu. Piyasalara, ekonomilere ve bütçelere bakıp bu soruya cevap aramış insanları yazı dizileri hâlinde anlatıyor. Yazılar kendi başına da okunur, ama her dizi sırayla okunmak üzere yazıldı.";
+
 const DIZILER = [
 {
   no: 1,
   slug: "fiyat-okumasi",
   ad: "Fiyat Okuması",
-  soru: "Fiyat nedir, nereye gider, izini nasıl süreriz?",
-  giris: "Bu bir yazı dizisi. Her yazı, bu soruya cevap vermeye çalışmış bir insanın hikâyesi: aynı zikzaklı çizgiye bakıp her biri başka bir şey görmüş tüccarlar, istatistikçiler, matematikçiler. Yazılar kendi başına da okunur, ama sırayla okunmak üzere yazıldı.",
+  ozet: "aynı zikzaklı çizgiye bakıp her biri başka bir şey görmüş tüccarların, istatistikçilerin ve matematikçilerin hikâyesi",
+  giris: "Okulun ilk dizisi. Her yazı, fiyatın izini sürmeye çalışmış bir insanın hikâyesi: aynı zikzaklı çizgiye bakıp her biri başka bir şey görmüş tüccarlar, istatistikçiler, matematikçiler.",
   durum: "suruyor",
   vitrin: true,
   tohum: 1900,
@@ -469,6 +475,10 @@ function render(md){
     return `<p>${inline(b)}</p>`;
   }).join("\n");
 }
+function okulGirisi(d){
+  const son = d.durum === "tamamlandi" ? "Son tamamlanan dizi" : "Şu an süren dizi";
+  return OKUL_GIRISI + ` ${son} ${d.ad}${d.ozet ? ": " + d.ozet : ""}.`;
+}
 function joinTr(a){ return a.length < 2 ? (a[0]||"") : a.slice(0,-1).join(", ") + " ve " + a[a.length-1]; }
 
 /* ==========================================================================
@@ -485,22 +495,23 @@ function home(){
       : `${hz.length} yazı yayında, dizi sürüyor`;
     const okunan = hz.filter(isRead).length;
     return `<a class="dz" href="${diziUrl(d)}">
-      <span class="dz-ad">${d.no}. dizi: ${esc(d.ad)}</span>
-      <span class="dz-soru">${esc(d.soru)}</span>
+      <span class="dz-ad">${d.no}. dizi</span>
+      <span class="dz-soru">${esc(d.ad)}</span>
       <span class="dz-tape ${drawn.home ? "" : "draw"}">${tapeSVG(d,{guides:true})}</span>
-      <span class="dz-meta">${durum}. ${esc(kisiler)}.${okunan ? ` <span class="done">Bu diziden ${okunan} yazı okudun.</span>` : ""}</span>
+      <span class="dz-meta">${d.ozet ? esc(d.ozet.charAt(0).toLocaleUpperCase("tr")+d.ozet.slice(1))+". " : ""}${durum}. ${esc(kisiler)}.${okunan ? ` <span class="done">Bu diziden ${okunan} yazı okudun.</span>` : ""}</span>
     </a>`;
   }).join("");
   $("#main").innerHTML = `
     <section class="hero hero-home">
-      <h1>Sırayla okunmak üzere yazılmış finans dizileri</h1>
-      <p>Finansal Bilgiler Okulası dizilerden oluşur. Her dizi tek bir sorunun etrafında kurulur ve o soruya cevap aramış insanların, fikirlerin ve kurumların hikâyesini baştan sona anlatır. Bir dizi bitince yenisi başlar.</p>
+      <h1>Tüm diziler</h1>
+      <p>${esc(OKUL_GIRISI)}</p>
     </section>
     <nav class="shelf" aria-label="Diziler">${shelf}</nav>`;
   drawn.home = true;
 }
 
 function series(d){
+  const root = d === VITRIN;
   document.title = d === VITRIN ? "Finansal Bilgiler Okulası" : d.ad + " | Finansal Bilgiler Okulası";
   const n = d.yazilar.length, list = n > 4;
   const cols = d.yazilar.map(y=>{
@@ -517,9 +528,9 @@ function series(d){
   const first = !drawn[d.slug];
   $("#main").innerHTML = `
     <section class="hero">
-      ${COK ? `<p class="crumb"><a href="#/diziler">Tüm diziler</a> <span aria-hidden="true">/</span> ${d.no}. dizi: ${esc(d.ad)}</p>` : ""}
-      <h1>${esc(d.soru)}</h1>
-      <p>${esc(d.giris)}</p>
+      ${COK && !root ? `<p class="crumb"><a href="#/diziler">Tüm diziler</a> <span aria-hidden="true">/</span> ${d.no}. dizi: ${esc(d.ad)}</p>` : ""}
+      <h1>${esc(root ? OKUL_SORUSU : d.ad)}</h1>
+      <p>${esc(root ? okulGirisi(d) : d.giris)}</p>
     </section>
     <figure class="tape" style="margin-left:0;margin-right:0">
       <div class="${first ? "draw" : ""}" id="tapebox">${tapeSVG(d,{guides:true})}</div>
