@@ -72,11 +72,11 @@ svg .g{stroke:var(--rule);stroke-width:1;fill:none;vector-effect:non-scaling-str
 svg .g.fork{stroke-dasharray:2 4}
 svg .g.med{stroke:var(--muted);opacity:.55}
 svg .div{stroke:var(--rule);stroke-width:1;vector-effect:non-scaling-stroke}
-svg[data-hl="1"] .p:not(.s1), svg[data-hl="2"] .p:not(.s2), svg[data-hl="3"] .p:not(.s3){opacity:.28}
-svg[data-hl="1"] .p.s1, svg[data-hl="2"] .p.s2, svg[data-hl="3"] .p.s3{stroke:var(--red);opacity:1}
-svg[data-hl="2"] .g, svg[data-hl="3"] .g{opacity:.3}
+svg.hl .p:not(.on){opacity:.28}
+svg.hl .p.on{stroke:var(--red);opacity:1}
+svg.hl .g{opacity:.35}
 
-.cols{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink);margin-top:0}
+.cols{display:grid;grid-template-columns:repeat(var(--n,3),1fr);border-top:1px solid var(--ink);margin-top:0}
 .col{display:block;text-decoration:none;padding:18px 22px 26px 0;position:relative}
 .col + .col{padding-left:22px;border-left:1px solid var(--rule)}
 .col .n{display:block;font-size:2.6rem;line-height:1;font-weight:400;font-style:italic;color:var(--red);font-variation-settings:"opsz" 72}
@@ -87,6 +87,15 @@ svg[data-hl="2"] .g, svg[data-hl="3"] .g{opacity:.3}
 a.col:hover .ans, a.col:focus-visible .ans{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
 .col.soon .n,.col.soon .ans,.col.soon .ttl{color:var(--muted)}
 .col .rt .done{color:var(--red)}
+.cols.list{grid-template-columns:1fr}
+.cols.list .col{display:grid;grid-template-columns:3.2rem minmax(0,1fr) minmax(0,1.3fr) auto;gap:4px 22px;align-items:baseline;padding:18px 0;border-left:0}
+.cols.list .col + .col{padding-left:0;border-left:0;border-top:1px solid var(--rule)}
+.cols.list .col .n{font-size:1.9rem;grid-row:span 2}
+.cols.list .col .who{margin:0;grid-column:2}
+.cols.list .col .ans{margin:0;grid-column:2;font-size:1.25rem}
+.cols.list .col .ttl{margin:0;grid-column:3;grid-row:1 / span 2}
+.cols.list .col .rt{margin:0;grid-column:4;grid-row:1 / span 2;white-space:nowrap}
+@media (max-width:760px){.cols.list .col{grid-template-columns:2.6rem 1fr}.cols.list .col .ttl,.cols.list .col .rt{grid-column:2;grid-row:auto}}
 .caption{margin:30px 0 0;font-size:1rem;font-style:italic;color:var(--muted);max-width:60ch}
 
 .foot{margin-top:clamp(80px,12vw,140px);padding:26px 0 40px;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;font-size:.95rem;color:var(--muted)}
@@ -98,7 +107,7 @@ a.col:hover .ans, a.col:focus-visible .ans{text-decoration:underline;text-decora
 .read{max-width:38rem;margin:0 auto}
 .mini{position:relative;margin:clamp(34px,6vw,64px) 0 0}
 .mini svg{display:block;width:100%;height:64px;overflow:visible}
-.mini .hit{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr)}
+.mini .hit{position:absolute;inset:0;display:grid;grid-template-columns:repeat(var(--n,3),1fr)}
 .mini .hit a,.mini .hit span{display:block}
 .mini .hit a:hover{background:linear-gradient(to top,var(--soft),transparent)}
 .mini-l{display:flex;justify-content:space-between;margin-top:8px;font-size:.9rem;color:var(--muted)}
@@ -142,6 +151,22 @@ a.col:hover .ans, a.col:focus-visible .ans{text-decoration:underline;text-decora
   .draw{animation:none}
   svg .p,svg .g{transition:none}
 }
+
+/* diziler: ana sayfa rafı */
+.hero-home h1{font-size:clamp(2.2rem,5.4vw,4.1rem);max-width:17ch}
+.crumb{margin:0 0 18px !important;font-size:1rem !important;color:var(--muted)}
+.crumb a{text-decoration:none}
+.crumb a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.shelf{border-top:1px solid var(--ink)}
+.dz{display:block;text-decoration:none;padding:30px 0 40px;border-bottom:1px solid var(--rule)}
+.dz-ad{display:block;font-size:1rem;color:var(--muted)}
+.dz-soru{display:block;margin-top:10px;font-size:clamp(1.7rem,3.6vw,2.6rem);line-height:1.08;font-weight:500;letter-spacing:-.016em;font-variation-settings:"opsz" 60;max-width:22ch;text-wrap:balance}
+.dz:hover .dz-soru,.dz:focus-visible .dz-soru{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+.dz-tape{display:block;margin-top:26px}
+.dz-tape svg{display:block;width:100%;height:clamp(90px,13vw,150px);overflow:visible}
+.dz-meta{display:block;margin-top:16px;font-size:1rem;color:var(--muted);max-width:70ch}
+.dz-meta .done{color:var(--red)}
+.dz:hover .p:not(.soon){stroke:var(--red)}
 </style>
 </head>
 <body>
@@ -163,21 +188,48 @@ a.col:hover .ans, a.col:focus-visible .ans{text-decoration:underline;text-decora
 
 <script>
 /* ==========================================================================
-   YAZILAR
-   Yeni yazı eklemek için: aşağıdaki listede "hazir: false" olan kaydı bulun,
-   metni "govde" alanına yapıştırın ve "hazir: true" yapın. Ardından listenin
-   sonuna bir sonraki yazı için yeni bir "hazir: false" kaydı ekleyin.
+   DİZİLER
+   Okul dizilerden oluşur. Her dizi tek bir soru etrafında kurulur ve kendi
+   sayfasında, kendi fiyat çizgisiyle durur. Ana sayfada diziler burada
+   yazıldıkları sırayla görünür.
+
+   YENİ DİZİ: Listenin sonuna yeni bir dizi kaydı ekleyin (no, slug, ad, soru,
+   giris, durum, tohum, yazilar). "tohum" çizginin biçimini belirleyen bir
+   sayıdır; her diziye farklı bir sayı verin. İsteğe bağlı "cizgiNotu",
+   dizi sayfasında çizginin altındaki açıklamanın ilk yarısıdır.
+   "durum": "suruyor" ya da "tamamlandi".
+
+   YENİ YAZI: İlgili dizinin "yazilar" listesinde "hazir: false" olan kaydı
+   bulun, metni "govde" alanına yapıştırın ve "hazir: true" yapın. Sonraki
+   yazı belliyse listenin sonuna yeni bir "hazir: false" kaydı ekleyin.
+
    Gövde kuralları: paragraflar arasında bir boş satır; ara başlıklar "## " ile
    başlar; *yıldız arası* italik olur.
-   Not: Üstteki fiyat çizgisi üç bölümlüdür (1-2-3). Dördüncü yazıda çizgiye
-   yeni bir bölüm eklemek gerekecek.
+
+   Her yazının "cizgi" alanı, o yazının çizgideki bölümünün nasıl çizileceğini
+   belirler: "merkez" (bir merkezin etrafında salınım), "yuruyus" (rastlantısal
+   yürüyüş), "sicrama" (kopuk, sert sıçramalar), "trend" (dalgalı ama yönü
+   belli bir gidiş), "dalga" (iç içe dalgalar). Çizgi, sütunlar ve yazı
+   içindeki küçük çizgi yazı sayısına göre kendiliğinden büyür.
    ========================================================================== */
-const YAZILAR = [
+const DIZILER = [
+{
+  no: 1,
+  slug: "fiyat-okumasi",
+  ad: "Fiyat Okuması",
+  soru: "Fiyat nedir, nereye gider, izini nasıl süreriz?",
+  giris: "Her yazı, bu soruya cevap vermeye çalışmış bir insanın hikâyesi: aynı zikzaklı çizgiye bakıp her biri başka bir şey görmüş tüccarlar, istatistikçiler, matematikçiler. Yazılar kendi başına da okunur, ama sırayla okunmak üzere yazıldı.",
+  durum: "suruyor",
+  tohum: 1900,
+  cizgiNotu: "Her bölümü, o yazının fiyata verdiği cevaba göre çizildi",
+  yazilar:
+[
 {
   no: 1,
   slug: "yercekimiyle-kavga-eden-adam",
   kisi: "Roger Babson",
   cevap: "Fiyatın bir merkezi vardır.",
+  cizgi: "merkez",
   baslik: "Yerçekimiyle Kavga Eden Adam ve Bir Dirgenin Hikâyesi",
   spot: "Bugün her grafik platformunda üç tıkla çizilen Andrews Dirgeni'nin arkasında yarım asırlık bir zincir var. Zincir bir nehirde boğulan on üç yaşında bir kızla başlıyor. Sonra 1929 çöküşünü \"bilen\" bir istatistikçiden ve yöntemini mezarına götüren bir matematikçiden geçiyor. Hikâye çekici; kanıtlar ise daha mütevazı.",
   hazir: true,
@@ -246,6 +298,7 @@ Buna rağmen dirgenin bugün hâlâ yaygın biçimde kullanılmasının makul bi
   slug: "sarhosun-yuruyusu",
   kisi: "Louis Bachelier",
   cevap: "Fiyat hiçbir yere gitmez.",
+  cizgi: "yuruyus",
   baslik: "Sarhoşun Yürüyüşü",
   spot: "Aynı gün, okyanusun iki yakasında iki adam. Biri fiyatın bir merkezi olduğuna inanıp servet kurdu. Öteki fiyatın hiçbir yere gitmediğini kanıtlamaya çalıştı ve unutuldu. Yarım asır sonra kazanan taraf değişti.",
   hazir: true,
@@ -316,47 +369,72 @@ Ama hikâye burada bitmiyor. 1960'ların başında, pamuk fiyatlarının yüz y�
   slug: "mandelbrot",
   kisi: "Benoit Mandelbrot",
   cevap: "Fiyat sanıldığından vahşidir.",
+  cizgi: "sicrama",
   baslik: "",
   spot: "Pamuk fiyatlarının yüz yıllık kayıtlarına bakan bir matematikçi, Babson'ın da Bachelier'nin de aynı şeyi hafife aldığını gösterdi.",
   hazir: false,
   govde: ``
 }
+]
+}
 ];
 
 /* ==========================================================================
-   FİYAT ÇİZGİSİ — her bölüm, o yazının fiyata verdiği cevapla çizilir:
-   1 merkeze dönen salınım, 2 rastlantısal yürüyüş, 3 kalın kuyruklu sıçramalar.
+   FİYAT ÇİZGİSİ — her dizinin kendi çizgisi vardır; her bölümü o yazının
+   fiyata verdiği cevapla çizilir.
    ========================================================================== */
 const W = 1200, H = 260, N = 110;
 function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 function gauss(r){let u=0,v=0;while(!u)u=r();while(!v)v=r();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
-const LINE = (function(){
-  const r = rng(1900), ys = [], med = [];
+const CIZGI_NOTU = {
+  merkez:"bir merkezin etrafında salınıyor", yuruyus:"sarhoş gibi yürüyor", sicrama:"kopup sıçrıyor",
+  trend:"dalgalanarak bir yöne akıyor", dalga:"dalgaların içinde dalgalar çiziyor"
+};
+const LINES = {};
+function lineOf(d){
+  if (LINES[d.slug]) return LINES[d.slug];
+  const r = rng(d.tohum || d.no*1000), ys = [], guides = [];
   const A = 2.6, slope = .045;
   let y = 0;
-  for (let i=0;i<N;i++){ const mu = i*slope; med.push(mu); y = mu + A*Math.sin(i*.2) + gauss(r)*.38; ys.push(y); }
-  for (let i=0;i<N;i++){ y += gauss(r)*.5; ys.push(y); }
-  for (let i=0;i<N;i++){ const c = Math.tan(Math.PI*(r()-.5))*.3; y += Math.max(-4.5, Math.min(4.5, c)); ys.push(y); }
-  const all = ys.concat(med.map(m=>m+A), med.map(m=>m-A));
+  d.yazilar.forEach((yz, s)=>{
+    const kind = yz.cizgi || "yuruyus", base = s*N, y0 = y;
+    for (let i=0;i<N;i++){
+      if (kind==="merkez"){ const mu = y0 + i*slope; y = mu + A*Math.sin(i*.2) + gauss(r)*.38; if(i===0||i===N-1) guides.push({s,i:base+i,mu}); }
+      else if (kind==="sicrama"){ const c = Math.tan(Math.PI*(r()-.5))*.3; y += Math.max(-4.5, Math.min(4.5, c)); }
+      else if (kind==="trend"){ y += .07 + gauss(r)*.42; }
+      else if (kind==="dalga"){ y = y0 + 1.8*Math.sin(i*.09) + .8*Math.sin(i*.37) + gauss(r)*.25; }
+      else { y += gauss(r)*.5; }
+      ys.push(y);
+    }
+  });
+  const T = ys.length;
+  const all = ys.concat(guides.map(g=>g.mu+A), guides.map(g=>g.mu-A));
   const lo = Math.min(...all), hi = Math.max(...all), pad = 18;
   const Y = v => (H - pad - (v-lo)/(hi-lo)*(H-2*pad)).toFixed(1);
-  const X = i => (i/(3*N-1)*W).toFixed(1);
-  const seg = (s)=>{ const a = s===0?0:s*N-1, b = (s+1)*N-1; let d=""; for(let i=a;i<=b;i++) d += (i===a?"M":"L")+X(i)+" "+Y(ys[i]); return d; };
-  const g = (off)=>"M"+X(0)+" "+Y(med[0]+off)+"L"+X(N-1)+" "+Y(med[N-1]+off);
-  return { seg, med:g(0), up:g(A), dn:g(-A), x1:X(N-1), x2:X(2*N-1) };
-})();
+  const X = i => (i/(T-1)*W).toFixed(1);
+  const seg = (s)=>{ const a = s===0?0:s*N-1, b = (s+1)*N-1; let p=""; for(let i=a;i<=b;i++) p += (i===a?"M":"L")+X(i)+" "+Y(ys[i]); return p; };
+  const gpaths = [];
+  for (let k=0;k<guides.length;k+=2){
+    const g0 = guides[k], g1 = guides[k+1];
+    const g = off => "M"+X(g0.i)+" "+Y(g0.mu+off)+"L"+X(g1.i)+" "+Y(g1.mu+off);
+    gpaths.push({s:g0.s, med:g(0), up:g(A), dn:g(-A)});
+  }
+  const divs = d.yazilar.slice(1).map((_,k)=>X((k+1)*N-1));
+  const starts = d.yazilar.map((_,k)=> k===0 ? 0 : ((k*N-1)/(T-1)*100));
+  return LINES[d.slug] = { seg, gpaths, divs, starts };
+}
 
-function tapeSVG(opts){
-  const hl = opts.hl ? ` data-hl="${opts.hl}"` : "";
-  const soon = YAZILAR.map(y=>!y.hazir);
-  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"${hl}>
-    <line class="div" x1="${LINE.x1}" y1="0" x2="${LINE.x1}" y2="${H}"/>
-    <line class="div" x1="${LINE.x2}" y1="0" x2="${LINE.x2}" y2="${H}"/>
-    ${opts.guides ? `<path class="g med" d="${LINE.med}"/><path class="g fork" d="${LINE.up}"/><path class="g fork" d="${LINE.dn}"/>` : ""}
-    <path class="p s1${soon[0]?" soon":""}" d="${LINE.seg(0)}"/>
-    <path class="p s2${soon[1]?" soon":""}" d="${LINE.seg(1)}"/>
-    <path class="p s3${soon[2]?" soon":""}" d="${LINE.seg(2)}"/>
-  </svg>`;
+function tapeSVG(d, opts){
+  const L = lineOf(d), hl = opts.hl || 0;
+  const divs = L.divs.map(x=>`<line class="div" x1="${x}" y1="0" x2="${x}" y2="${H}"/>`).join("");
+  const guides = L.gpaths.filter(g=>opts.guides===true || opts.guides===g.s+1)
+    .map(g=>`<path class="g med" d="${g.med}"/><path class="g fork" d="${g.up}"/><path class="g fork" d="${g.dn}"/>`).join("");
+  const paths = d.yazilar.map((y,s)=>`<path class="p${y.hazir?"":" soon"}${hl===s+1?" on":""}" data-s="${s+1}" d="${L.seg(s)}"/>`).join("");
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"${hl?' class="hl"':""}>${divs}${guides}${paths}</svg>`;
+}
+function highlight(svg, n){
+  svg.classList.toggle("hl", !!n);
+  svg.querySelectorAll(".p").forEach(p=>p.classList.toggle("on", p.dataset.s==n));
 }
 
 /* ==========================================================================
@@ -367,13 +445,16 @@ const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;
 const inline = s => esc(s).replace(/\*([^*]+)\*/g,"<em>$1</em>");
 const words = y => y.govde.trim().split(/\s+/).length;
 const minutes = y => Math.max(1, Math.round(words(y)/220));
-const SIRA = ["birinci","ikinci","üçüncü","dördüncü","beşinci","altıncı","yedinci","sekizinci","dokuzuncu","onuncu"];
+const SIRA = ["birinci","ikinci","üçüncü","dördüncü","beşinci","altıncı","yedinci","sekizinci","dokuzuncu","onuncu","on birinci","on ikinci"];
 const sira = n => SIRA[n-1] || (n+".");
 const store = {
   get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
   set(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
 };
 const isRead = y => store.get("fbo-okundu-"+y.slug) === "1";
+const ready = d => d.yazilar.filter(y=>y.hazir);
+const diziUrl = d => `#/dizi/${d.slug}`;
+const yaziUrl = (d,y) => `#/dizi/${d.slug}/yazi/${y.slug}`;
 function render(md){
   return md.trim().split(/\n\s*\n/).map(b=>{
     b = b.trim();
@@ -381,87 +462,129 @@ function render(md){
     return `<p>${inline(b)}</p>`;
   }).join("\n");
 }
+function joinTr(a){ return a.length < 2 ? (a[0]||"") : a.slice(0,-1).join(", ") + " ve " + a[a.length-1]; }
 
 /* ==========================================================================
    SAYFALAR
    ========================================================================== */
-let firstHome = true;
+const drawn = {};
 function home(){
   document.title = "Finansal Bilgiler Okulası";
-  const cols = YAZILAR.slice(0,3).map(y=>{
+  const shelf = DIZILER.map(d=>{
+    const hz = ready(d), sonraki = d.yazilar.find(y=>!y.hazir);
+    const kisiler = joinTr(hz.map(y=>y.kisi)) + (sonraki ? `, sırada ${sonraki.kisi}` : "");
+    const durum = d.durum === "tamamlandi"
+      ? `Tamamlandı, ${hz.length} yazı`
+      : `${hz.length} yazı yayında, dizi sürüyor`;
+    const okunan = hz.filter(isRead).length;
+    return `<a class="dz" href="${diziUrl(d)}">
+      <span class="dz-ad">${d.no}. dizi: ${esc(d.ad)}</span>
+      <span class="dz-soru">${esc(d.soru)}</span>
+      <span class="dz-tape ${drawn.home ? "" : "draw"}">${tapeSVG(d,{guides:true})}</span>
+      <span class="dz-meta">${durum}. ${esc(kisiler)}.${okunan ? ` <span class="done">${okunan} yazısını okudun.</span>` : ""}</span>
+    </a>`;
+  }).join("");
+  $("#main").innerHTML = `
+    <section class="hero hero-home">
+      <h1>Sırayla okunmak üzere yazılmış finans dizileri</h1>
+      <p>Finansal Bilgiler Okulası dizilerden oluşur. Her dizi tek bir sorunun etrafında kurulur ve o soruya cevap aramış insanların, fikirlerin ve kurumların hikâyesini baştan sona anlatır. Bir dizi bitince yenisi başlar.</p>
+    </section>
+    <nav class="shelf" aria-label="Diziler">${shelf}</nav>`;
+  drawn.home = true;
+}
+
+function series(d){
+  document.title = d.ad + " | Finansal Bilgiler Okulası";
+  const n = d.yazilar.length, list = n > 4;
+  const cols = d.yazilar.map(y=>{
     const inner = `<span class="n">${y.no}</span>
       <span class="who">${esc(y.kisi)}</span>
       <span class="ans">${esc(y.cevap)}</span>
       ${y.hazir ? `<span class="ttl">${esc(y.baslik)}</span>` : ""}
       <span class="rt">${y.hazir ? (isRead(y) ? `<span class="done">Okundu</span>, ${minutes(y)} dakikalık okuma` : `${minutes(y)} dakikalık okuma`) : "Hazırlanıyor"}</span>`;
     return y.hazir
-      ? `<a class="col" href="#/yazi/${y.slug}" data-n="${y.no}">${inner}</a>`
+      ? `<a class="col" href="${yaziUrl(d,y)}" data-n="${y.no}">${inner}</a>`
       : `<div class="col soon" data-n="${y.no}">${inner}</div>`;
   }).join("");
+  const L = lineOf(d);
+  const first = !drawn[d.slug];
   $("#main").innerHTML = `
     <section class="hero">
-      <h1>Fiyat nedir, nereye gider, izini nasıl süreriz?</h1>
-      <p>Bu bir yazı dizisi. Her yazı, bu soruya cevap vermeye çalışmış bir insanın hikâyesi: aynı zikzaklı çizgiye bakıp her biri başka bir şey görmüş tüccarlar, istatistikçiler, matematikçiler. Yazılar kendi başına da okunur, ama sırayla okunmak üzere yazıldı.</p>
+      <p class="crumb"><a href="#/">Diziler</a> <span aria-hidden="true">/</span> ${d.no}. dizi: ${esc(d.ad)}</p>
+      <h1>${esc(d.soru)}</h1>
+      <p>${esc(d.giris)}</p>
     </section>
     <figure class="tape" style="margin-left:0;margin-right:0">
-      <div class="${firstHome ? "draw" : ""}" id="tapebox">${tapeSVG({guides:true})}</div>
-      <div class="nums" aria-hidden="true"><span style="left:0">1</span><span style="left:33.33%">2</span><span style="left:66.66%">3</span></div>
+      <div class="${first ? "draw" : ""}" id="tapebox">${tapeSVG(d,{guides:true})}</div>
+      <div class="nums" aria-hidden="true">${L.starts.map((p,k)=>`<span style="left:${p.toFixed(2)}%">${k+1}</span>`).join("")}</div>
     </figure>
-    <nav class="cols" aria-label="Dizinin yazıları">${cols}</nav>
-    <p class="caption">Yukarıdaki çizgi dizinin kendisi. Her bölümü, o yazının fiyata verdiği cevaba göre çizildi: önce bir merkezin etrafında salınıyor, sonra sarhoş gibi yürüyor, sonra kopup sıçrıyor.</p>`;
-  firstHome = false;
+    <nav class="cols${list ? " list" : ""}" style="--n:${n}" aria-label="Dizinin yazıları">${cols}</nav>
+    <p class="caption">Yukarıdaki çizgi dizinin kendisi. ${d.cizgiNotu ? esc(d.cizgiNotu) : "Her bölümü, dizinin bir yazısı"}: ${d.yazilar.map((y,k)=>(k===0?"önce ":"sonra ")+(CIZGI_NOTU[y.cizgi]||CIZGI_NOTU.yuruyus)).join(", ")}.</p>`;
+  drawn[d.slug] = true;
   const svg = $("#tapebox svg");
   document.querySelectorAll(".col").forEach(c=>{
-    const on = ()=>svg.setAttribute("data-hl", c.dataset.n), off = ()=>svg.removeAttribute("data-hl");
+    const on = ()=>highlight(svg, c.dataset.n), off = ()=>highlight(svg, 0);
     c.addEventListener("mouseenter", on); c.addEventListener("mouseleave", off);
     c.addEventListener("focus", on); c.addEventListener("blur", off);
   });
 }
 
-function article(y){
+function article(d, y){
   document.title = y.baslik + " | Finansal Bilgiler Okulası";
-  const next = YAZILAR.find(z=>z.no===y.no+1);
-  const hits = YAZILAR.slice(0,3).map(z=> z.hazir && z.no!==y.no
-    ? `<a href="#/yazi/${z.slug}" aria-label="${z.no}. yazı: ${esc(z.baslik)}"></a>` : `<span></span>`).join("");
+  const next = d.yazilar.find(z=>z.no===y.no+1);
+  const hits = d.yazilar.map(z=> z.hazir && z.no!==y.no
+    ? `<a href="${yaziUrl(d,z)}" aria-label="${z.no}. yazı: ${esc(z.baslik)}"></a>` : `<span></span>`).join("");
   let end;
   if (next && next.hazir){
     end = `<p class="lbl">Dizide sıradaki, ${sira(next.no)} yazı</p>
-      <a class="go" href="#/yazi/${next.slug}"><span class="t">${esc(next.baslik)}</span><span class="a">${esc(next.kisi)}: ${esc(next.cevap)}</span></a>`;
+      <a class="go" href="${yaziUrl(d,next)}"><span class="t">${esc(next.baslik)}</span><span class="a">${esc(next.kisi)}: ${esc(next.cevap)}</span></a>`;
   } else if (next){
     end = `<p class="lbl">Dizide sıradaki, ${sira(next.no)} yazı</p>
       <p class="soon"><em>${esc(next.kisi)}</em> hazırlanıyor. ${esc(next.spot)}</p>`;
+  } else if (d.durum === "tamamlandi"){
+    end = `<p class="lbl">${esc(d.ad)} dizisinin son yazısı</p>
+      <a class="go" href="#/"><span class="t">Diğer dizilere göz at</span></a>`;
   } else {
     end = `<p class="lbl">Dizinin şimdilik son yazısı</p>`;
   }
   $("#main").innerHTML = `
     <article class="read">
       <div class="mini">
-        ${tapeSVG({hl:y.no, guides:y.no===1})}
-        <div class="hit">${hits}</div>
+        ${tapeSVG(d,{hl:y.no, guides:y.no})}
+        <div class="hit" style="--n:${d.yazilar.length}">${hits}</div>
       </div>
-      <div class="mini-l"><a href="#/">Dizinin başı</a><span>${y.no} / ${YAZILAR.length}</span></div>
+      <div class="mini-l"><a href="${diziUrl(d)}">${esc(d.ad)}</a><span>${y.no} / ${d.yazilar.length}</span></div>
       <header class="rhead">
-        <p class="which">Dizinin ${sira(y.no)} yazısı, <em>${esc(y.kisi)}</em></p>
+        <p class="which">${esc(d.ad)} dizisinin ${sira(y.no)} yazısı, <em>${esc(y.kisi)}</em></p>
         <h1 tabindex="-1">${esc(y.baslik)}</h1>
         <p class="deck">${inline(y.spot)}</p>
         <p class="meta">${minutes(y)} dakikalık okuma</p>
       </header>
       <div class="body">${render(y.govde)}</div>
-      <footer class="next">${end}<br><a class="back" href="#/">Dizinin başına dön</a></footer>
+      <footer class="next">${end}<br><a class="back" href="${diziUrl(d)}">Dizinin başına dön</a></footer>
     </article>`;
-  window.scrollTo(0,0);
   const h = $(".rhead h1"); if (h) h.focus({preventScroll:true});
 }
 
+let current = null;
 function route(){
-  const m = location.hash.match(/^#\/yazi\/([\w-]+)/);
-  const y = m && YAZILAR.find(z=>z.slug===m[1] && z.hazir);
-  current = y || null;
-  if (y) article(y); else { home(); window.scrollTo(0,0); }
-  progress();
+  const h = location.hash;
+  let m;
+  current = null;
+  if ((m = h.match(/^#\/yazi\/([\w-]+)/))){           // eski bağlantılar
+    for (const d of DIZILER){ const y = d.yazilar.find(z=>z.slug===m[1] && z.hazir); if (y){ location.replace(yaziUrl(d,y)); return; } }
+  }
+  if ((m = h.match(/^#\/dizi\/([\w-]+)(?:\/yazi\/([\w-]+))?/))){
+    const d = DIZILER.find(z=>z.slug===m[1]);
+    if (d && m[2]){
+      const y = d.yazilar.find(z=>z.slug===m[2] && z.hazir);
+      if (y){ current = y; article(d,y); window.scrollTo(0,0); progress(); return; }
+    }
+    if (d){ series(d); window.scrollTo(0,0); progress(); return; }
+  }
+  home(); window.scrollTo(0,0); progress();
 }
 
-let current = null;
 function progress(){
   const bar = $("#bar");
   if (!current){ bar.style.transform = "scaleX(0)"; return; }
