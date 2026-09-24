@@ -175,6 +175,7 @@ a.col:hover .ans, a.col:focus-visible .ans{text-decoration:underline;text-decora
   <header class="top">
     <a class="mark" href="#/">Finansal Bilgiler <b>Okulası</b></a>
     <div class="top-r">
+      <a class="home-link" id="all-link" href="#/diziler" hidden>Tüm diziler</a>
       <a class="home-link" href="https://mehmetcihatkeles.com" target="_blank" rel="noopener">Mehmet Cihat Keleş</a>
       <button class="theme" id="theme" type="button">Gece</button>
     </div>
@@ -198,6 +199,9 @@ a.col:hover .ans, a.col:focus-visible .ans{text-decoration:underline;text-decora
    sayıdır; her diziye farklı bir sayı verin. İsteğe bağlı "cizgiNotu",
    dizi sayfasında çizginin altındaki açıklamanın ilk yarısıdır.
    "durum": "suruyor" ya da "tamamlandi".
+   "vitrin: true" olan dizi sitenin giriş sayfasıdır; yeni bir dizi başladığında
+   vitrini ona taşıyın (tek bir dizide olmalı). Birden fazla dizi olduğunda
+   "Tüm diziler" bağlantısı ve dizilerin listelendiği sayfa kendiliğinden belirir.
 
    YENİ YAZI: İlgili dizinin "yazilar" listesinde "hazir: false" olan kaydı
    bulun, metni "govde" alanına yapıştırın ve "hazir: true" yapın. Sonraki
@@ -218,8 +222,9 @@ const DIZILER = [
   slug: "fiyat-okumasi",
   ad: "Fiyat Okuması",
   soru: "Fiyat nedir, nereye gider, izini nasıl süreriz?",
-  giris: "Her yazı, bu soruya cevap vermeye çalışmış bir insanın hikâyesi: aynı zikzaklı çizgiye bakıp her biri başka bir şey görmüş tüccarlar, istatistikçiler, matematikçiler. Yazılar kendi başına da okunur, ama sırayla okunmak üzere yazıldı.",
+  giris: "Bu bir yazı dizisi. Her yazı, bu soruya cevap vermeye çalışmış bir insanın hikâyesi: aynı zikzaklı çizgiye bakıp her biri başka bir şey görmüş tüccarlar, istatistikçiler, matematikçiler. Yazılar kendi başına da okunur, ama sırayla okunmak üzere yazıldı.",
   durum: "suruyor",
+  vitrin: true,
   tohum: 1900,
   cizgiNotu: "Her bölümü, o yazının fiyata verdiği cevaba göre çizildi",
   yazilar:
@@ -453,7 +458,9 @@ const store = {
 };
 const isRead = y => store.get("fbo-okundu-"+y.slug) === "1";
 const ready = d => d.yazilar.filter(y=>y.hazir);
-const diziUrl = d => `#/dizi/${d.slug}`;
+const VITRIN = DIZILER.find(d=>d.vitrin) || [...DIZILER].reverse().find(d=>d.durum!=="tamamlandi") || DIZILER[DIZILER.length-1];
+const COK = DIZILER.length > 1;
+const diziUrl = d => d === VITRIN ? "#/" : `#/dizi/${d.slug}`;
 const yaziUrl = (d,y) => `#/dizi/${d.slug}/yazi/${y.slug}`;
 function render(md){
   return md.trim().split(/\n\s*\n/).map(b=>{
@@ -469,7 +476,7 @@ function joinTr(a){ return a.length < 2 ? (a[0]||"") : a.slice(0,-1).join(", ") 
    ========================================================================== */
 const drawn = {};
 function home(){
-  document.title = "Finansal Bilgiler Okulası";
+  document.title = "Tüm diziler | Finansal Bilgiler Okulası";
   const shelf = DIZILER.map(d=>{
     const hz = ready(d), sonraki = d.yazilar.find(y=>!y.hazir);
     const kisiler = joinTr(hz.map(y=>y.kisi)) + (sonraki ? `, sırada ${sonraki.kisi}` : "");
@@ -481,7 +488,7 @@ function home(){
       <span class="dz-ad">${d.no}. dizi: ${esc(d.ad)}</span>
       <span class="dz-soru">${esc(d.soru)}</span>
       <span class="dz-tape ${drawn.home ? "" : "draw"}">${tapeSVG(d,{guides:true})}</span>
-      <span class="dz-meta">${durum}. ${esc(kisiler)}.${okunan ? ` <span class="done">${okunan} yazısını okudun.</span>` : ""}</span>
+      <span class="dz-meta">${durum}. ${esc(kisiler)}.${okunan ? ` <span class="done">Bu diziden ${okunan} yazı okudun.</span>` : ""}</span>
     </a>`;
   }).join("");
   $("#main").innerHTML = `
@@ -494,7 +501,7 @@ function home(){
 }
 
 function series(d){
-  document.title = d.ad + " | Finansal Bilgiler Okulası";
+  document.title = d === VITRIN ? "Finansal Bilgiler Okulası" : d.ad + " | Finansal Bilgiler Okulası";
   const n = d.yazilar.length, list = n > 4;
   const cols = d.yazilar.map(y=>{
     const inner = `<span class="n">${y.no}</span>
@@ -510,7 +517,7 @@ function series(d){
   const first = !drawn[d.slug];
   $("#main").innerHTML = `
     <section class="hero">
-      <p class="crumb"><a href="#/">Diziler</a> <span aria-hidden="true">/</span> ${d.no}. dizi: ${esc(d.ad)}</p>
+      ${COK ? `<p class="crumb"><a href="#/diziler">Tüm diziler</a> <span aria-hidden="true">/</span> ${d.no}. dizi: ${esc(d.ad)}</p>` : ""}
       <h1>${esc(d.soru)}</h1>
       <p>${esc(d.giris)}</p>
     </section>
@@ -543,7 +550,7 @@ function article(d, y){
       <p class="soon"><em>${esc(next.kisi)}</em> hazırlanıyor. ${esc(next.spot)}</p>`;
   } else if (d.durum === "tamamlandi"){
     end = `<p class="lbl">${esc(d.ad)} dizisinin son yazısı</p>
-      <a class="go" href="#/"><span class="t">Diğer dizilere göz at</span></a>`;
+      <a class="go" href="#/diziler"><span class="t">Diğer dizilere göz at</span></a>`;
   } else {
     end = `<p class="lbl">Dizinin şimdilik son yazısı</p>`;
   }
@@ -582,7 +589,8 @@ function route(){
     }
     if (d){ series(d); window.scrollTo(0,0); progress(); return; }
   }
-  home(); window.scrollTo(0,0); progress();
+  if (h.startsWith("#/diziler") && COK){ home(); window.scrollTo(0,0); progress(); return; }
+  series(VITRIN); window.scrollTo(0,0); progress();
 }
 
 function progress(){
@@ -610,6 +618,7 @@ addEventListener("hashchange", route);
   label();
 })();
 
+if (COK) $("#all-link").hidden = false;
 route();
 </script>
 </body>
