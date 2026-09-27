@@ -216,7 +216,8 @@ a.col:hover .ans, a.col:focus-visible .ans{text-decoration:underline;text-decora
    Her yazının "cizgi" alanı, o yazının çizgideki bölümünün nasıl çizileceğini
    belirler: "merkez" (bir merkezin etrafında salınım), "yuruyus" (rastlantısal
    yürüyüş), "sicrama" (kopuk, sert sıçramalar), "trend" (dalgalı ama yönü
-   belli bir gidiş), "dalga" (iç içe dalgalar). Çizgi, sütunlar ve yazı
+   belli bir gidiş), "dalga" (iç içe dalgalar), "haber" (durgun, habere
+   anında basamak atlayan fiyat). Çizgi, sütunlar ve yazı
    içindeki küçük çizgi yazı sayısına göre kendiliğinden büyür.
    ========================================================================== */
 const OKUL_SORUSU = "Fiyat nedir, nereye gider, izini nasıl süreriz?";
@@ -381,8 +382,83 @@ Ama hikâye burada bitmiyor. 1960'ların başında, pamuk fiyatlarının yüz y�
   kisi: "Benoit Mandelbrot",
   cevap: "Fiyat sanıldığından vahşidir.",
   cizgi: "sicrama",
+  baslik: "Vahşi Rastlantı",
+  spot: "Bir Harvard ofisindeki kara tahtada, yanlış yere çizilmiş gibi duran bir grafik. Bir asırlık pamuk fiyatları. Ve iki eski rakibin, Babson'ın merkezi ile Bachelier'nin rastlantısının, aynı şeyi hafife aldığını gösteren bir matematikçi.",
+  hazir: true,
+  govde: `1961 baharında, Harvard İktisat Bölümü'nde verilecek bir seminerden hemen önce, otuz altı yaşındaki bir matematikçi ev sahibinin odasına uğradı. Adı Benoit Mandelbrot'tu. Onu davet eden iktisatçı Hendrik Houthakker, gelir dağılımı üzerine yaptığı çalışmaları duymuş ve konuşmasını istemişti. Mandelbrot odaya girdiğinde durdu. Kara tahtada, birazdan kendi çizeceği diyagramın neredeyse aynısı duruyordu.
+
+Şaşkınlığını dile getirdiğinde Houthakker'in cevabı daha da şaşırtıcıydı: Mandelbrot'un ne anlatacağından haberi yoktu. Tahtadaki grafik gelir dağılımıyla ilgili değildi. Pamuk fiyatlarıydı.
+
+Houthakker o sıralar büyük bir hayal kırıklığı yaşıyordu. New York Pamuk Borsası yaklaşık bir asırdır titiz fiyat kayıtları tutuyordu ve Houthakker bu verileri, Bachelier'den miras kalan modele oturtmaya çalışıyordu. Olmuyordu. Pamuk fiyatları modelin öngördüğünden çok daha hırçındı. Büyük sıçramalar ve çöküşler, olmaları gerekenden çok daha sık yaşanıyordu. Üstelik tek tek değil, kümeler halinde geliyordu.
+
+Mandelbrot tahtaya bakarken Houthakker'in göremediği bir şey gördü. Serimizin sorusuna üçüncü cevap o odada doğdu.
+
+## Gezgin bir matematikçi
+
+Mandelbrot 20 Kasım 1924'te Varşova'da, Litvanya kökenli Yahudi bir ailede doğdu. Babası giyim ticareti yapıyordu, annesi doktordu. 1936'da aile, amcası Szolem Mandelbrojt'un peşinden Fransa'ya göç etti. Szolem, Collège de France'ta matematik profesörüydü ve yeğeninin eğitimini üstlendi. Mandelbrot yıllar sonra bu göçün hayatlarını kurtardığını yazacaktı. İkinci Dünya Savaşı başladığında aile Paris'ten Orta Fransa'daki Tulle kasabasına çekildi. İşgal yıllarını sürekli bir korku içinde geçirdiler.
+
+Savaştan sonra Mandelbrot, Fransa'nın iki seçkin okulunun, École Normale Supérieure ile École Polytechnique'in giriş sınavlarını birlikte kazandı. Amcasının tavsiyesiyle ENS'ye yazıldı, ama bir gün sonra istifa etti. Oradaki soyut, formül merkezli matematik kültürü, görsel düşünen zihnine yabancı geliyordu. Polytechnique'e geçti. Hocalarından biri Paul Lévy'ydi.
+
+Bu isim serimizin okurlarına tanıdık gelecektir. Lévy, yirmi yıl önce Louis Bachelier'nin kadro başvurusunu, çalışmalarından birini yanlış okuyarak engelleyen matematikçiydi. Aynı Lévy, olasılık kuramına "kararlı dağılımlar" adı verilen bir matematik ailesi kazandırmıştı. Mandelbrot'un pamuk fiyatlarında göreceği şeyin dili, bu dağılımlar olacaktı.
+
+Mandelbrot hiçbir zaman tek bir disipline sığmadı. Tesadüfler onu bir alandan ötekine taşıdı. Bir gün amcası, metroda okuyacak bir şey arayan yeğenine çöp sepetinden çıkardığı bir kitap eleştirisini verdi. Eleştiri, kelime sıklıkları üzerine yazılmış bir kitap hakkındaydı ve Mandelbrot'un ilk ciddi araştırmasının konusunu belirledi. Sonra türbülans, dilbilim, gelir dağılımı geldi. 1958'de IBM'in New York'taki araştırma merkezinde bir yaz işi kabul etti. O "yaz işi" otuz beş yıl sürdü.
+
+## Pamuğun sırrı
+
+Houthakker'in verileri Mandelbrot'un elinde bambaşka bir hikâye anlatmaya başladı. Bachelier'nin modeli, fiyat değişimlerinin çan eğrisine, yani normal dağılıma uyduğunu varsayıyordu. Bu dünyada küçük hareketler çok yaygındır, büyük hareketler ise son derece nadirdir. Ortalamadan uzaklaştıkça olasılık o kadar hızlı düşer ki, gerçekten büyük bir sıçrama pratikte imkânsız hale gelir.
+
+Pamuk fiyatları bu kurala uymuyordu. Büyük hareketler, çan eğrisinin izin verdiğinden kat kat fazlaydı. Mandelbrot bu davranışı Lévy'nin kararlı dağılımlarıyla tarif etti. Bu dağılımların "kuyrukları" kalındı: Uç olaylar nadir değil, sistemin doğal bir parçasıydı. Daha da rahatsız edici bir sonuç vardı. Mandelbrot'un modelinde fiyat değişimlerinin varyansı sonsuz olabiliyordu. Yani oynaklığı ölçmeye çalışan biri, ne kadar veri toplarsa toplasın, istikrarlı bir sayıya ulaşamayabilirdi. Her yeni fırtına ortalamayı yeniden bozacaktı.
+
+Mandelbrot bir şey daha fark etti. Günlük, aylık ve yıllık pamuk fiyatı grafikleri, üzerlerindeki ölçek çıkarıldığında birbirinden neredeyse ayırt edilemiyordu. Fiyat her ölçekte aynı biçimde pürüzlüydü. Bu gözlem, on yıl sonra adını vereceği "fraktal" geometrinin ilk tohumlarından biriydi.
+
+1963'te bulgularını "Bazı Spekülatif Fiyatların Değişimi" başlıklı makalede yayımladı. Mesajı açıktı: Bachelier fiyatın rastlantısal olduğunu söylerken haklıydı, ama rastlantının türünü yanlış seçmişti. Fiyat uysal bir sarhoş gibi değil, zaman zaman çılgına dönen bir sarhoş gibi yürüyordu. Mandelbrot sonradan bu ayrımı "ılımlı" ve "vahşi" rastlantı diye adlandıracaktı.
+
+## Kan, ter ve gözyaşı
+
+Makale finans dünyasına bir bomba gibi düştü. Ama bomba patladıktan sonra herkes yerine döndü.
+
+Tepkinin en ünlü örneğini MIT'li iktisatçı Paul Cootner verdi. Cootner, Bachelier'nin tezinin İngilizce çevirisini de içeren ve rastlantısal yürüyüş ekolünün (Random Walkers) kutsal kitabı sayılan derlemenin editörüydü. Mandelbrot'un makalesini de bu kitaba aldı, ama yanına sert bir yorum ekledi. Mandelbrot, dedi, Churchill gibi bize ütopya değil kan, ter ve gözyaşı vaat ediyordu. Eğer haklıysa, iktisatçıların kullandığı istatistik araçlarının neredeyse tamamı işe yaramaz hale gelecekti. Yüzyılların birikimini çöpe atmadan önce bunun gerçekten gerekli olduğundan emin olmak istiyordu.
+
+Cootner'ın itirazı aslında sorunun özünü ortaya koyuyordu. Mandelbrot'un matematiği doğru olabilirdi, ama kullanışsızdı. Çan eğrisi üzerine kurulmuş bütün modern finans aracı, portföy kuramından risk hesaplarına kadar, onun varsayımlarını kabul ettiği anda çökecekti.
+
+En çarpıcı dönüşü genç bir Chicago'lu iktisatçı yaşadı. Eugene Fama başlangıçta Mandelbrot'un fikirlerinin ateşli bir savunucusuydu. Doktora tezinde fiyat değişimlerinin kalın kuyruklu olduğunu doğruladı. Ama birkaç yıl içinde Mandelbrot'u savunmaktan onu görmezden gelmeye geçti. Fama sonradan nedenini açıkça söyledi: Mandelbrot'un fikirleri sistemli biçimde çalışılamayacak kadar zordu. Finans, gerçeğe en yakın modeli değil, üzerinde hesap yapılabilen modeli seçti.
+
+1960'ların sonunda Mandelbrot finansı bıraktı. Enerjisini doğanın pürüzlülüğüne, kıyı şeritlerine, bulutlara, dağlara yöneltti. 1975'te "fraktal" kelimesini türetti. Birkaç yıl sonra adını taşıyan küme, yirminci yüzyılın en tanınmış matematik görüntülerinden biri oldu. Dünya onu bir geometri devrimcisi olarak tanıdı. Piyasalar üzerine söyledikleri ise bir dipnota dönüştü.
+
+## Tufan
+
+Piyasalar ise Mandelbrot'u unutmadı; sadece onu kanıtlamak için zaman beklediler.
+
+19 Ekim 1987 Pazartesi günü Dow Jones Sanayi Endeksi tek günde yüzde 22,6 değer kaybetti. 1929 Kara Pazartesi'sinden bile büyük bir düşüştü. Mandelbrot'un sonradan aktardığı hesaplara göre, standart modellerle bu olayın olasılığı pratikte sıfırdı. O kadar küçük bir sayıydı ki, evrenin yaşı boyunca bir kez bile yaşanmaması gerekirdi.
+
+On bir yıl sonra benzer bir fırtına tekrar geldi. Ağustos 1998'de, Rusya krizi sırasında Dow bir günde yüzde 3,5, üç hafta sonra yüzde 4,4, ayın son gününde ise yüzde 6,8 düştü. Mandelbrot'un hesabına göre standart modelde bir ay içinde bu büyüklükte üç düşüş görmenin olasılığı yaklaşık 500 milyarda birdi. Uzmanlar buna bir "aykırı değer", kimsenin öngöremeyeceği bir talihsizlik dedi. Mandelbrot'a göre ise bu, yanlış modelin kaçınılmaz sonucuydu.
+
+2004'te, gazeteci Richard Hudson'la birlikte yazdığı kitapta Mandelbrot piyasaları iki İncil hikâyesiyle anlattı. "Nuh etkisi" ani ve yıkıcı sıçramaları temsil ediyordu; tufan gibi, uyarı vermeden gelen hareketleri. "Yusuf etkisi" ise uzun süreli eğilimleri; yedi bereketli yılın ardından yedi kıtlık yılının gelmesi gibi, piyasanın geçmişini hatırladığı dönemleri. Mandelbrot'a göre gerçek piyasalar ikisini birden taşıyordu: hem ani fırtınaları hem de uzun hafızayı.
+
+Kitapta hafızaya dair bir anekdot da var. 1960'larda Wall Street'in yaşlı kurtları, 1929'u ve Buhran'ı yaşamış adamlar, Mandelbrot'u bir konuda uyarmıştı: Onlar bu işten çekildiğinde bir şey kaybolacaktı. Mandelbrot'a göre 1987 çöküşünün, o adamların büyük kısmı sahneden çekildikten sonra gelmesi tesadüf değildi.
+
+## Üçüncü cevap
+
+Serinin sorusuna dönelim: Fiyat nedir, nereye gider, izini nasıl süreriz?
+
+Babson'a göre fiyat bir merkez etrafında salınan bir sarkaçtı. Bachelier'ye göre sarhoş bir yürüyüştü. Mandelbrot ise ikisinin de aynı şeyi gözden kaçırdığını gösterdi. Babson'ın normal çizgisi de, Bachelier'nin çan eğrisi de sakin bir dünyayı varsayıyordu. Birinde fiyat merkezden fazla uzaklaşamazdı, ötekinde büyük sıçramalar neredeyse imkânsızdı. Oysa gerçek fiyat, uzun süre uysal davranıp bir anda bütün hesapları altüst edebilen bir şeydi.
+
+Herhangi bir fiyat grafiğine bakan bir trader bunu teoriden değil tecrübeden bilir. Haftalarca dar bir bantta sıkışan fiyat, birkaç saatte yüzde yirmi hareket edebilir. Bir kanalın içinde aylarca kusursuz ilerleyen trend, tek bir mumla dağılabilir. Mandelbrot'un dersi, bu anların istisna değil kural olduğuydu. Kanalı çizmek hâlâ anlamlı olabilir; ama fırtınanın o kanala sığacağını varsaymak değil.
+
+Mandelbrot kendi kuramı hakkında da dürüsttü. Kitabın başında bilimsel okurlara yazdığı notta, bu bulguların kimseyi zengin etmeyeceği uyarısında bulundu. Fraktal finans bir kazanç formülü değildi. Sadece piyasaların, sanıldığından çok daha riskli olduğunun kanıtıydı.
+
+Benoit Mandelbrot 14 Ekim 2010'da, seksen beş yaşında öldü. İki yıl önce, 2008 krizinde piyasalar bir kez daha çan eğrisinin "imkânsız" dediği hareketleri art arda yaşamıştı. Ölümünün ardından yazılan yazıların çoğu onu fraktalların babası olarak andı. Finans dünyasında ise çok sayıda insan, yarım asır önce kara tahtadaki o pamuk grafiğine bakıp söylediği şeyin ne kadar doğru olduğunu ancak şimdi fark ediyordu.
+
+Mandelbrot'un fikirlerini ilk benimseyen, sonra ondan uzaklaşan o genç Chicago'lu iktisatçı ise serimizin sorusuna en radikal cevabı verecekti: Fiyatı okumaya çalışmak boşunadır, çünkü fiyat bilinmesi gereken her şeyi zaten biliyordur. Adı Eugene Fama. Ve serinin bir sonraki yazısı onun hikâyesi.`
+},
+{
+  no: 4,
+  slug: "eugene-fama",
+  kisi: "Eugene Fama",
+  cevap: "Fiyat bilinmesi gereken her şeyi zaten bilir.",
+  cizgi: "haber",
   baslik: "",
-  spot: "Pamuk fiyatlarının yüz yıllık kayıtlarına bakan bir matematikçi, Babson'ın da Bachelier'nin de aynı şeyi hafife aldığını gösterdi.",
+  spot: "Mandelbrot'un fikirlerini ilk benimseyen, sonra ondan uzaklaşan genç Chicago'lu iktisatçı, serinin sorusuna en radikal cevabı verecekti: Fiyatı okumaya çalışmak boşunadır.",
   hazir: false,
   govde: ``
 }
@@ -399,7 +475,7 @@ function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15
 function gauss(r){let u=0,v=0;while(!u)u=r();while(!v)v=r();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
 const CIZGI_NOTU = {
   merkez:"bir merkezin etrafında salınıyor", yuruyus:"sarhoş gibi yürüyor", sicrama:"kopup sıçrıyor",
-  trend:"dalgalanarak bir yöne akıyor", dalga:"dalgaların içinde dalgalar çiziyor"
+  trend:"dalgalanarak bir yöne akıyor", dalga:"dalgaların içinde dalgalar çiziyor", haber:"her haberi anında fiyata katıp bekliyor"
 };
 const LINES = {};
 function lineOf(d){
@@ -413,6 +489,7 @@ function lineOf(d){
       if (kind==="merkez"){ const mu = y0 + i*slope; y = mu + A*Math.sin(i*.2) + gauss(r)*.38; if(i===0||i===N-1) guides.push({s,i:base+i,mu}); }
       else if (kind==="sicrama"){ const c = Math.tan(Math.PI*(r()-.5))*.3; y += Math.max(-4.5, Math.min(4.5, c)); }
       else if (kind==="trend"){ y += .07 + gauss(r)*.42; }
+      else if (kind==="haber"){ if (i % 18 === 9) y += (r() < .5 ? -1 : 1) * (1.6 + r()*1.8); else y += gauss(r)*.07; }
       else if (kind==="dalga"){ y = y0 + 1.8*Math.sin(i*.09) + .8*Math.sin(i*.37) + gauss(r)*.25; }
       else { y += gauss(r)*.5; }
       ys.push(y);
