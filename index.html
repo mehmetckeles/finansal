@@ -217,7 +217,7 @@ a.col:hover .ans, a.col:focus-visible .ans{text-decoration:underline;text-decora
    belirler: "merkez" (bir merkezin etrafında salınım), "yuruyus" (rastlantısal
    yürüyüş), "sicrama" (kopuk, sert sıçramalar), "trend" (dalgalı ama yönü
    belli bir gidiş), "dalga" (iç içe dalgalar), "haber" (durgun, habere
-   anında basamak atlayan fiyat). Çizgi, sütunlar ve yazı
+   anında basamak atlayan fiyat), "balon" (coşkuyla şişip sert sönen fiyat). Çizgi, sütunlar ve yazı
    içindeki küçük çizgi yazı sayısına göre kendiliğinden büyür.
    ========================================================================== */
 const OKUL_SORUSU = "Fiyat nedir, nereye gider, izini nasıl süreriz?";
@@ -457,8 +457,91 @@ Mandelbrot'un fikirlerini ilk benimseyen, sonra ondan uzaklaşan o genç Chicago
   kisi: "Eugene Fama",
   cevap: "Fiyat bilinmesi gereken her şeyi zaten bilir.",
   cizgi: "haber",
+  baslik: "Piyasayı Yenebilir misin?",
+  spot: "1950'lerin sonunda bir iktisat profesörü, yan iş olarak yürüttüğü borsa tahmin servisinde çalışan genç bir öğrencisine basit bir soru sordu: Piyasayı yenebilir misin? Öğrenci bu sorunun peşinde bir ömür geçirdi. Vardığı cevap kısaydı: Hayır, en azından sürekli olarak değil. Bugün milyonlarca insan birikimini piyasayı yenmeye çalışan uzmanlara değil, piyasanın tamamını satın alan fonlara emanet ediyor. Bunun arkasında o cevap var.",
+  hazir: true,
+  govde: `1950'lerin sonunda Massachusetts'teki Tufts Üniversitesi'nde iktisat dersleri veren Harry Ernst'in bir yan işi vardı: abonelerine piyasanın nereye gideceğini söyleyen ve bu tahminleri para karşılığında satan bir borsa tahmin servisi. Roger Babson da yarım asır önce aynı türden bir iş kurmuştu. Ernst işini büyütmek istiyordu. Bir gün son sınıf öğrencilerinden birine, bu yazı dizisinin sorusunu neredeyse kelimesi kelimesine sordu: Piyasayı yenecek modeller tasarlayabilir misin?
+
+Öğrencinin adı Eugene Fama'ydı. Yirmili yaşlarının başındaydı ve iktisat okumaya yeni başlamıştı. Yine de işe koyuldu. Geçmiş fiyat verilerini inceledi; piyasanın bir sonraki hareketini kestirmeye yarayacak kurallar ve sistemler geliştirdi. Bu sistemlerin bazıları kâğıt üzerinde parlak görünüyordu.
+
+Ernst ise iyi bir istatistikçiydi ve bir konuda ısrar ediyordu: Fama her yöntemi, onu geliştirirken kullanmadığı verilerle de sınamalıydı. Bir kuralın geçmişe kusursuz uyması, geleceği bildiği anlamına gelmiyordu. Fama'nın sistemleri bu sınavda zorlandı. Geçmiş verilerde işe yarayan yöntemler, yeni verilerle karşılaşınca tutunamadı.
+
+Fama, bu dersin önemini ancak yıllar sonra kavradığını yazacaktı. Trader'ların çoğu bu dersi para kaybederek öğrenir; Ernst ise onu öğrencisine bedavaya göstermişti. Fama'nın dersin değerini anlaması zaman aldı. Sonraki altmış yılını da, bir bakıma, Ernst'in servisinin vaat ettiği şeyin neden bu kadar zor olduğunu açıklamaya adadı.
+
+## Sporcu bir öğretmen adayı
+
+Eugene Francis Fama 14 Şubat 1939'da doğdu. Büyükanneleri ve büyükbabaları Sicilya'dan Amerika'ya göç etmişti. Fama, Boston'un kuzeyindeki işçi kasabaları Medford ve Malden'da büyüdü. Gençliğinde kendini bir iktisatçı adayından çok bir sporcu olarak görüyordu. Malden Katolik Lisesi'nde Amerikan futbolunda, atletizmde ve beyzbolda başarılıydı; basketbolu ise kendi deyişiyle kötü oynuyordu. Okulu onu yıllar sonra spor onur listesine aldı. Lisedeki antrenörü, Fama'nın bütün derslerinden en yüksek notları aldığını da hatırlıyor. Fama, hayat arkadaşı Sally ile de o yıllarda tanıştı. Sally, Fama'nın okulunun tam karşısındaki kız lisesinde okuyordu.
+
+Fama 1956'da Tufts'a girdiğinde planı belliydi: lise öğretmeni ve antrenör olacaktı. Latin dilleri bölümüne yazıldı. İki yıl sonra, kendi anlatımıyla, Voltaire'i tekrar tekrar okumaktan sıkıldı ve bir iktisat dersi aldı. Bu ders hayatının yönünü değiştirdi.
+
+Fama 1960'ta Tufts'tan onur derecesiyle mezun oldu. Ernst'in servisinde uyanan merakı, onu Chicago Üniversitesi'nin işletme okuluna götürdü.
+
+## Chicago yılları ve Mandelbrot'un gölgesi
+
+Fama, Chicago'da doktorasını Merton Miller ve istatistikçi Harry Roberts'ın yanında yaptı. Benoit Mandelbrot da o yıllarda bölüme sık sık konuk olarak geliyordu. Bu dizinin bir önceki yazısının kahramanı Mandelbrot, pamuk fiyatlarındaki "vahşi rastlantıyı" keşfetmiş ve finans dünyasını rahatsız etmeye başlamıştı.
+
+Genç Fama, Mandelbrot'un fikirlerinden çok etkilendi. 1963'te Journal of Business dergisi aynı sayısında önce Mandelbrot'un pamuk makalesini, hemen ardından da Fama'nın bir makalesini yayımladı. Fama bu makalede Mandelbrot'un hipotezini ele alıyor ve destekliyordu. Doktorasını 1964'te tamamladı; tezini 1965'te "Borsa Fiyatlarının Davranışı" başlığıyla yayımladı. Tez iki sonuca ulaşıyordu. Birincisi, fiyat değişimleri büyük ölçüde rastlantısal bir yol izliyordu; geçmişteki hareketlere bakarak gelecektekileri öngörmek mümkün değildi. İkincisi, Mandelbrot'un söylediği gibi, büyük fiyat sıçramaları çan eğrisinin öngördüğünden çok daha sık yaşanıyordu.
+
+Fama sonraki yıllarda Mandelbrot'un matematiğinden uzaklaştı. Gerekçesi ilkesel değil, pratikti: Mandelbrot'un modelleriyle sistemli araştırma yapmak çok zordu. Fama rastlantısal yürüyüş fikrini ise hiç bırakmadı; tersine, onu bir adım daha ileri taşıdı.
+
+Chicago'daki başka çalışmalar da aynı sonuca işaret ediyordu. Fama, Marshall Blume ile birlikte "filtre kuralları" denen basit alım satım sistemlerini sınadı. Bu sistemler, fiyat belli bir oranda yükselince almayı, aynı oranda düşünce satmayı öneriyordu. İkili, işlem maliyetlerini hesaba kattığında bu kuralların, hisseyi alıp bekleyen bir yatırımcıdan daha fazla kazandırmadığını buldu. Fama 1969'da üç meslektaşıyla yaptığı bir başka çalışmada, hisse bölünmesi gibi haberlerin fiyata çok hızlı yansıdığını gösterdi. Piyasa, haberi neredeyse anında fiyata dönüştürüyordu.
+
+## 1970: Etkin piyasalar
+
+Fama 1970'te o güne kadar biriken bulguları tek bir makalede topladı. Makalenin merkezinde, bugün "etkin piyasalar hipotezi" diye bilinen fikir duruyordu: Fiyat, o an elde bulunan bütün bilgiyi yansıtır.
+
+Fama bu fikri üç kademede tanımladı. Zayıf biçimine göre fiyat, geçmiş fiyat hareketlerinden çıkarılabilecek her bilgiyi zaten içerir. Orta biçimine göre fiyat, bilançolar, haberler ve şirket açıklamaları gibi herkese açık bütün bilgileri de yansıtır. Güçlü biçimine göre ise şirket içindekilerin bildiği gizli bilgiler bile fiyata yansımıştır. Fama, güçlü biçimin gerçek piyasalarda geçerli olmadığını kendisi de kabul ediyordu; asıl tartışma ilk iki biçim üzerineydi.
+
+Hipotezin zayıf biçimi, bu dizinin okurlarını doğrudan ilgilendiren bir iddia taşır: Geçmiş fiyatlara bakarak geleceği sürekli olarak tahmin etmek mümkün değildir. Babson'ın normal çizgisi, Andrews'un dirgeni, bir trader'ın ekranındaki bütün göstergeler bu iddiayla karşı karşıyadır. Fama'ya göre fiyat ne bir merkeze döner ne de belirli bir kalıbı izler. Grafikte böyle bir düzen görüyorsak, o düzen ya şans eseri ortaya çıkmıştır ya da biz geçmişe fazla uyan bir yorum yapmışızdır.
+
+Fama'nın iddiası çoğu zaman yanlış anlaşılır. Fama, fiyatın her zaman "doğru" olduğunu söylemiyor. Söylediği şu: Kimse fiyatın nerede yanlış olduğunu önceden ve güvenilir biçimde bilemez. Fiyat yanılabilir; ancak bir yatırımcı fiyatın hangi yönde yanıldığını bilseydi, o yönde alım ya da satım yapar ve yanlışı hızla düzeltirdi. Fama bir inceliğe daha dikkat çekti: Bir piyasanın etkin olup olmadığını sınamak için önce fiyatın "olması gereken" düzeyini belirleyen bir model kurmak gerekir. Bu yüzden her test aynı anda iki şeyi sınar. Sonuç olumsuz çıktığında, test hatanın piyasada mı yoksa modelde mi olduğunu tek başına söyleyemez.
+
+## Endeks fonları: Fikrin sonuçları
+
+Etkin piyasalar fikrinin pratikteki sonucu sade ama sarsıcıydı. Piyasayı sürekli yenmek mümkün değilse, yatırımcı için en akıllıca yol piyasanın tamamını satın almaktı. Hisse seçen uzmanlara yüksek ücretler ödemek yerine, bir endeksteki bütün hisseleri düşük maliyetle tutmak yeterliydi.
+
+1976'da John Bogle'ın kurduğu Vanguard şirketi, sıradan yatırımcıların da alabileceği ilk endeks fonlarından birini piyasaya sürdü. Fon başlangıçta pek ilgi görmedi ve alay konusu oldu; yatırım uzmanlarının gözünde piyasanın ortalamasıyla yetinmek, neredeyse yenilgiyi kabul etmek demekti. Fama da 1980'lerde, bu fikirleri uygulamaya döken Dimensional Fund Advisors şirketinin kuruluşunda rol aldı. Bugün yatırımcıların trilyonlarca doları, piyasayı izleyen bu tür fonlarda duruyor. Fama'nın adını hiç duymamış milyonlarca insan, emeklilik birikimini onun fikirleri üzerine kurulmuş fonlara emanet ediyor.
+
+## Çatlaklar ve balonlar
+
+Etkin piyasalar hipotezi zamanla itirazlarla karşılaştı. Bu itirazların bir kısmı Fama'nın kendi çalışmalarından geldi.
+
+Fama, 1990'ların başında Kenneth French ile birlikte yaptığı araştırmalarda, dönemin standart modelinin hisse getirilerini açıklamakta yetersiz kaldığını gösterdi. Küçük şirketlerin hisseleri ve defter değerine göre ucuz görünen hisseler, modelin öngördüğünden daha fazla kazandırıyordu. Fama ve French bu farkı piyasanın yanılmasına değil, bu şirketlerin taşıdığı ek riske bağladılar. Eleştirmenler ise aynı bulguyu piyasanın yanılabildiğinin kanıtı olarak gördü.
+
+Daha köklü bir itiraz Yale Üniversitesi'nden geldi. Robert Shiller 1981'de, hisse fiyatlarının şirketlerin dağıttığı kâr paylarıyla açıklanamayacak kadar çok dalgalandığını gösterdi. Shiller'a göre fiyatlar zaman zaman gerçeklikten kopuyor; kalabalığın coşkusuyla şişiyor, korkusuyla sönüyordu. Bu olgunun bir adı vardı: balon.
+
+Fama bu kelimeyi hiçbir zaman benimsemedi. 2008 krizinin ardından, 2010'da New Yorker dergisinden John Cassidy'ye verdiği söyleşide, balonun ne anlama geldiğini bile bilmediğini söyledi; ona göre bu kelimeler moda olmuştu ama hiçbir anlam taşımıyordu. Söyleşinin bir yerinde Shiller'ı da andı ve onun 1996'dan beri piyasalarda balon gördüğünü hatırlattı. Fama'ya göre bir şeye balon demek, fiyatın çökeceğini önceden bildiğini iddia etmekti. İstatistiksel veriler ise kimsenin bunu güvenilir biçimde yapabildiğini göstermiyordu.
+
+## Stockholm, 2013
+
+Ekim 2013'te İsveç Kraliyet Bilimler Akademisi, Nobel İktisat Ödülü'nü üç kişiye verdi: Eugene Fama, Lars Peter Hansen ve Robert Shiller. Üçü de varlık fiyatları üzerine çalışıyordu.
+
+Shiller ödülü kazandığını telefonda öğrendiğinde şaşırdı; asıl şaşkınlığını ise ödülü kiminle paylaşacağını duyunca yaşadı. Fama ile çok farklı görüşlere sahip olduklarını, sanki farklı dinlere inandıklarını söyledi.
+
+ABD'li radyo kuruluşu NPR'ın Planet Money programı iki ekonomistle ayrı ayrı konuştu; ortaya neredeyse bir düello çıktı. Fama, "balon" kelimesinin onu çıldırttığını söyledi. Shiller'ın internet balonunu ve konut balonunu önceden görmüş olması da onu etkilemedi. Fama'ya göre bu tahminlere geri dönüp şans eseri tutup tutmadıklarını sorgulamak gerekirdi. Shiller gelecekteki on balonu da önceden bilirse ikna olacağını söyledi ve ekledi: İstatistiksel güvenilirlik için iki örnek yetmez. Programın muhabiri bu meydan okumayı Shiller'a iletti. Shiller'ın cevabı insanı gülümsetiyordu: On balonu da bilebileceğini düşünüyordu, yalnızca o kadar uzun yaşamayacaktı.
+
+Nobel komitesi de bu kararın çelişkili yanının farkındaydı. Akademi aynı yıl aynı ödülü, aynı soruya zıt cevaplar veren iki adama vermişti: "piyasa bilir" diyen birine ve "piyasa yanılır" diyen birine.
+
+## Dördüncü cevap
+
+Dizinin sorusuna dönelim: Fiyat nedir, nereye gider, izini nasıl süreriz?
+
+Babson'a göre fiyat, bir merkez etrafında salınan bir sarkaçtı. Bachelier'ye göre sarhoş bir adamın yürüyüşüydü. Mandelbrot'a göre bu sarhoş zaman zaman çılgına dönüyordu. Fama'nın cevabı ise hepsinden daha radikal: Fiyat, bilinmesi gereken her şeyi zaten yansıtır. Fiyatı okumaya çalışan biri, milyonlarca yatırımcının bir araya getirdiği bilgiyi tek başına geride bırakmaya çalışmaktadır.
+
+Bu cevap bir trader'ı rahatsız eder; ancak ondan çıkan ders sanıldığı kadar yıkıcı değildir. Fama'nın bütün kariyeri, Tufts'taki o küçük tahmin servisinde edindiği tek bir alışkanlığa dayanır: Bir yöntemi, onu geliştirirken kullanmadığın verilerle sınamak. Geçmiş grafiklerde kusursuz işleyen bir dirgen, bir gösterge ya da bir sistem henüz hiçbir şey kanıtlamamıştır. Etkin piyasalar hipotezine inanıp inanmamak bir tercih olabilir; yöntemini o sınava sokmak ise bir zorunluluktur.
+
+Fama bugün 87 yaşında ve Chicago'da hâlâ ders veriyor. Dizinin önceki kahramanlarından farklı olarak onun hikâyesi henüz bitmedi. Hâlâ söyleşiler veriyor ve kimsenin balonları oluştukları anda fark edemeyeceğini savunmayı sürdürüyor. Kariyerine damgasını vuran tartışma da kapanmış değil: Piyasa gerçekten her şeyi biliyor mu, yoksa biz yalnızca ondan daha az mı biliyoruz?
+
+Fama'nın en güçlü rakibi ise Stockholm'de ödülü onunla paylaşan adamdı. Yale'li bu iktisatçı, fiyatın zaman zaman aklını kaybettiğini, kalabalığın coşkusuyla şişip korkusuyla söndüğünü savunuyordu. Adı Robert Shiller. Dizinin bir sonraki yazısı onun hikâyesi.`
+},
+{
+  no: 5,
+  slug: "robert-shiller",
+  kisi: "Robert Shiller",
+  cevap: "Fiyat zaman zaman aklını kaybeder.",
+  cizgi: "balon",
   baslik: "",
-  spot: "Mandelbrot'un fikirlerini ilk benimseyen, sonra ondan uzaklaşan genç Chicago'lu iktisatçı, serinin sorusuna en radikal cevabı verecekti: Fiyatı okumaya çalışmak boşunadır.",
+  spot: "Stockholm'de Nobel'i Fama ile paylaşan Yale'li iktisatçı, fiyatın zaman zaman gerçeklikten koptuğunu, kalabalığın coşkusuyla şişip korkusuyla söndüğünü savundu.",
   hazir: false,
   govde: ``
 }
@@ -475,7 +558,7 @@ function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15
 function gauss(r){let u=0,v=0;while(!u)u=r();while(!v)v=r();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
 const CIZGI_NOTU = {
   merkez:"bir merkezin etrafında salınıyor", yuruyus:"sarhoş gibi yürüyor", sicrama:"kopup sıçrıyor",
-  trend:"dalgalanarak bir yöne akıyor", dalga:"dalgaların içinde dalgalar çiziyor", haber:"her haberi anında fiyata katıp bekliyor"
+  trend:"dalgalanarak bir yöne akıyor", dalga:"dalgaların içinde dalgalar çiziyor", haber:"her haberi anında fiyata katıp bekliyor", balon:"coşkuyla şişip korkuyla sönüyor"
 };
 const LINES = {};
 function lineOf(d){
@@ -489,6 +572,7 @@ function lineOf(d){
       if (kind==="merkez"){ const mu = y0 + i*slope; y = mu + A*Math.sin(i*.2) + gauss(r)*.38; if(i===0||i===N-1) guides.push({s,i:base+i,mu}); }
       else if (kind==="sicrama"){ const c = Math.tan(Math.PI*(r()-.5))*.3; y += Math.max(-4.5, Math.min(4.5, c)); }
       else if (kind==="trend"){ y += .07 + gauss(r)*.42; }
+      else if (kind==="balon"){ const u=i/(N-1); const top=.78; const target = u<top ? 6.5*Math.pow(u/top,2.4) : 6.5*Math.max(0,1-(u-top)/(1-top)*1.25); y = y0 + target + gauss(r)*.22; }
       else if (kind==="haber"){ if (i % 18 === 9) y += (r() < .5 ? -1 : 1) * (1.6 + r()*1.8); else y += gauss(r)*.07; }
       else if (kind==="dalga"){ y = y0 + 1.8*Math.sin(i*.09) + .8*Math.sin(i*.37) + gauss(r)*.25; }
       else { y += gauss(r)*.5; }
