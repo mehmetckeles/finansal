@@ -167,6 +167,71 @@ a.col:hover .ans, a.col:focus-visible .ans{text-decoration:underline;text-decora
 .dz-meta{display:block;margin-top:16px;font-size:1rem;color:var(--muted);max-width:70ch}
 .dz-meta .done{color:var(--red)}
 .dz:hover .p:not(.soon){stroke:var(--red)}
+
+/* haftaya başlarken */
+.pod-link{color:var(--ink);white-space:nowrap}
+.pod .rhead{border-bottom:0;margin-bottom:0;padding-bottom:26px}
+.pod .which a{text-decoration:none}
+.pod .which a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+@media (max-width:760px){.top-r{gap:14px}}
+.pod-link b{font-weight:500;color:var(--red)}
+.pod-band{display:grid;grid-template-columns:auto 1fr;gap:6px 22px;align-items:baseline;margin:clamp(48px,7vw,80px) 0 0;padding:24px 0 26px;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);text-decoration:none}
+.pod-band .k{grid-row:span 2;font-size:2.4rem;line-height:1;font-style:italic;color:var(--red);font-variation-settings:"opsz" 72}
+.pod-band .t{font-size:1rem;color:var(--muted)}
+.pod-band .s{font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.18;font-weight:500;letter-spacing:-.012em;font-variation-settings:"opsz" 48;text-wrap:balance}
+.pod-band:hover .s,.pod-band:focus-visible .s{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.eps{border-top:1px solid var(--ink)}
+.ep{display:grid;grid-template-columns:3.2rem minmax(0,1fr) auto;gap:4px 22px;align-items:baseline;padding:20px 0 24px;border-bottom:1px solid var(--rule);text-decoration:none}
+.ep .n{grid-row:span 2;font-size:1.9rem;line-height:1;font-style:italic;color:var(--red);font-variation-settings:"opsz" 72}
+.ep .d{font-size:.98rem;color:var(--muted)}
+.ep .t{grid-column:2;font-size:1.42rem;line-height:1.2;font-weight:500;letter-spacing:-.01em;font-variation-settings:"opsz" 36;text-wrap:balance}
+.ep .rt{grid-column:3;grid-row:1 / span 2;font-size:.92rem;color:var(--muted);white-space:nowrap}
+.ep:hover .t,.ep:focus-visible .t{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+@media (max-width:760px){.ep{grid-template-columns:2.6rem 1fr}.ep .rt{grid-column:2;grid-row:auto}}
+.note{margin:26px 0 0;font-size:1rem;font-style:italic;color:var(--muted);max-width:62ch}
+
+.player{margin:0 0 40px;padding:22px 0 18px;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
+.pl-row{display:flex;align-items:center;gap:18px}
+.pl-btn{flex:none;width:58px;height:58px;border-radius:50%;border:1px solid var(--ink);background:var(--ink);color:var(--paper);display:grid;place-items:center;cursor:pointer;padding:0}
+.pl-btn:hover{background:var(--red);border-color:var(--red)}
+.pl-btn svg{width:22px;height:22px;display:block}
+.pl-line{position:relative;flex:1;min-width:0;height:64px;cursor:pointer;touch-action:none}
+.pl-line svg{display:block;width:100%;height:100%;overflow:visible}
+.pl-line .base{fill:none;stroke:var(--muted);stroke-width:1.4;opacity:.55;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.pl-line .done{fill:none;stroke:var(--red);stroke-width:1.8;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.pl-line .head{stroke:var(--red);stroke-width:1;vector-effect:non-scaling-stroke}
+.pl-line .ch{stroke:var(--rule);stroke-width:1;vector-effect:non-scaling-stroke}
+.pl-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 18px;margin-top:12px;font-size:.92rem;color:var(--muted);font-variant-numeric:lining-nums tabular-nums}
+.pl-meta button,.pl-meta a{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-decoration:none}
+.pl-meta button:hover,.pl-meta a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.pl-meta .r{display:flex;gap:18px}
+.chap{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 20px;font-size:.95rem}
+.chap button{font:inherit;color:var(--muted);background:none;border:0;padding:2px 0;cursor:pointer;text-align:left}
+.chap button span{font-variant-numeric:lining-nums tabular-nums;margin-right:6px}
+.chap button:hover,.chap button.on{color:var(--ink)}
+.chap button.on span{color:var(--red)}
+.pl-wait{margin:0;font-size:1.05rem;font-style:italic;color:var(--muted)}
+
+.box{margin:0 0 36px}
+.box h2{margin:0 0 12px;font-size:1rem;font-weight:400;color:var(--muted);font-variation-settings:"opsz" 14}
+.box ol,.box ul{margin:0;padding:0;list-style:none;border-top:1px solid var(--rule)}
+.box li{padding:12px 0;border-bottom:1px solid var(--rule);font-size:1.12rem;line-height:1.45;text-wrap:pretty}
+.box ol{counter-reset:k}
+.box ol li{display:grid;grid-template-columns:2rem 1fr;counter-increment:k}
+.box ol li::before{content:counter(k);font-style:italic;color:var(--red)}
+.box li b{font-weight:600}
+.box li .w{display:block;margin-top:2px;font-size:1rem;color:var(--muted)}
+.src li{font-size:1rem}
+.src a{text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:3px}
+.src a:hover{text-decoration-color:currentColor}
+details.tx{margin:0 0 36px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+details.tx summary{cursor:pointer;padding:14px 0;font-size:1.12rem;list-style:none;display:flex;justify-content:space-between;gap:12px}
+details.tx summary::-webkit-details-marker{display:none}
+details.tx summary::after{content:"Aç";color:var(--muted);font-size:.95rem}
+details.tx[open] summary::after{content:"Kapat"}
+details.tx .body{padding:6px 0 18px}
+.small{font-size:.98rem;color:var(--muted);line-height:1.55;text-wrap:pretty}
+.small + .small{margin-top:8px}
 </style>
 </head>
 <body>
@@ -175,6 +240,7 @@ a.col:hover .ans, a.col:focus-visible .ans{text-decoration:underline;text-decora
   <header class="top">
     <a class="mark" href="#/">Finansal Bilgiler <b>Okulası</b></a>
     <div class="top-r">
+      <a class="pod-link" href="#/haftaya-baslarken">Haftaya <b>Başlarken</b></a>
       <a class="home-link" id="all-link" href="#/diziler" hidden>Tüm diziler</a>
       <a class="home-link" href="https://mehmetcihatkeles.com" target="_blank" rel="noopener">Mehmet Cihat Keleş</a>
       <button class="theme" id="theme" type="button">Gece</button>
@@ -617,6 +683,142 @@ Shiller'ın hikâyesinde kalabalık, yükselen fiyatın peşinden koşuyor ve co
 ];
 
 /* ==========================================================================
+   HAFTAYA BAŞLARKEN — her Pazartesi yayımlanan sesli program.
+   YENİ BÖLÜM: "bolumler" listesinin BAŞINA yeni bir kayıt ekleyin. Ses dosyası
+   "ses/" klasörüne yüklenir. "sure" saniye cinsindendir; "kisimlar" bölüm içi
+   atlama noktalarıdır (saniye). Kaynaklar okunmaz, sayfada yazılır.
+   ========================================================================== */
+const PODCAST = {
+  slug: "haftaya-baslarken",
+  ad: "Haftaya Başlarken",
+  giris: "Her Pazartesi öğleden önce, yaklaşık on dakika. Beril önce haftanın başlıklarını veriyor, ardından haftanın okumasına geçiyoruz: piyasada hangi fiyatların birlikte hareket ettiğine bakıyor, geçen hafta söylediklerimizi kontrol ediyor ve önümüzdeki haftanın kırılgan noktalarını konuşuyoruz. Ne olacağını değil, nerede kırılabileceğini.",
+  bolumler: [
+{
+  no: 1,
+  slug: "9-kasim-2026",
+  tarih: "9 Kasım 2026",
+  baslik: "Tema kırılıyor, sistem henüz kırılmıyor.",
+  spot: "Yarı iletkenlerde altı yılın en sert günü bir panik miydi, yoksa kalabalık bir temanın satışı mı? Okumamız değişmedi. Bu hafta Salı günü, ikisinin arasındaki çizgiyi test edecek.",
+  ses: "ses/haftaya-baslarken-01.mp3",
+  sure: 626,
+  kisimlar: [[0, "Açılış ve başlıklar"], [65, "Haftanın okuması"], [241, "Karar defteri"], [330, "Haftanın ölçümü"], [363, "Kırılganlık haritası"], [553, "Okumayı ne yanlışlar"], [603, "Kapanış"]],
+  basliklar: [
+    "Amerika'da ara seçimin ardından Demokratlar Kongre'nin iki kanadını da kazandı; piyasa sonucu büyük ölçüde bekliyordu.",
+    "Yapay zekâ hisselerinde sert satış: Perşembe günü yarı iletken endeksi bir günde yüzde 12 düştü, son altı yılın en sert günü.",
+    "Ekim istihdamı beklentinin çok üstünde: 165 bin yeni iş. Fed'in Aralık'ta faiz artırma ihtimali yüzde 80'e çıktı.",
+    "Nvidia'nın yönetim kurulu, Jensen Huang hakkında iç soruşturma başlattı.",
+    "Salı: Ekim enflasyonu ve CoreWeave bilançosu aynı gün."
+  ],
+  kirilgan: [
+    ["Yapay zekâ finansmanı", "Tetikleyici: Salı gecesi CoreWeave bilançosu. İlk görüneceği yer şirket tahvilleri."],
+    ["Hafıza döngüsünün tepesi", "Tetikleyiciler: Çarşamba hafıza fiyat raporu, Perşembe Applied Materials, 17 Kasım Nvidia."],
+    ["Enflasyon ve Fed", "Tetikleyici: Salı 16.30'da Ekim enflasyonu. Beklenti aylık yüzde 0,3, yıllık yüzde 3,9."]
+  ],
+  kaynaklar: [
+    ["FRED: 2 yıllık Hazine faizi (DGS2)", "https://fred.stlouisfed.org/series/DGS2"],
+    ["FRED: yüksek getirili tahvil risk primi (BAMLH0A0HYM2)", "https://fred.stlouisfed.org/series/BAMLH0A0HYM2"],
+    ["FRED: 10 yıllık enflasyon beklentisi (T10YIE)", "https://fred.stlouisfed.org/series/T10YIE"],
+    ["FRED: korku endeksi (VIXCLS)", "https://fred.stlouisfed.org/series/VIXCLS"],
+    ["Reuters/Yahoo: Ekim istihdam raporu", "https://finance.yahoo.com/economy/policy/articles/strong-october-jobs-report-sends-134858909.html"],
+    ["CNBC: Qualcomm ve çip satışı", "https://www.cnbc.com/2026/11/05/qualcomm-earnings-chip-stocks-election.html"],
+    ["TrendForce: 4 Kasım hafıza spot fiyatları", "https://www.trendforce.com/news/2026/11/04/insights-memory-spot-price-update-mainstream-ddr4-prices-dip-0-09-as-spot-premium-keeps-buyers-on-sidelines/"],
+    ["TradingKey: haftanın takvimi", "https://www.tradingkey.com/analysis/stocks/us-stocks/262294759-week-ahead-october-cpi-ppi-coreweave-cisco-applied-materials-tradingkey"],
+    ["BigGo Finance: enflasyon beklentisi ve CoreWeave", "https://finance.biggo.com/news/e4483964-462e-4dad-8f9d-1f957b6feffb"],
+    ["CoinCentral: Nvidia soruşturması", "https://coincentral.com/stock-market-today-futures-edge-higher-as-nvidia-probe-meets-cpi-report-and-coreweave-earnings"]
+  ],
+  verilerTarihi: "Veriler 6 Kasım kapanışları ve 9 Kasım sabahı itibarıyla.",
+  metin: `## Açılış ve başlıklar
+
+Merhaba, ben Beril. Bugün 9 Kasım, Pazartesi. Finansal Bilgiler Okulası'ndan Haftaya Başlarken'e hoş geldiniz.
+
+Önce haftaya başlarken öne çıkan başlıklar.
+
+Amerika'da ara seçimin ardından Demokratlar Kongre'nin iki kanadını da kazandı. Piyasa bu sonucu büyük ölçüde bekliyordu.
+
+Yapay zekâ hisselerinde sert satış. Perşembe günü yarı iletken endeksi bir günde yüzde 12 düştü; son altı yılın en sert günü.
+
+Amerika'da istihdam beklentinin çok üstünde geldi. Ekonomiye 165 bin yeni iş eklendi. Fed'in Aralık'ta faiz artırma ihtimali yüzde 80'e yükseldi.
+
+Nvidia'nın yönetim kurulu, şirketin üst yöneticisi Jensen Huang hakkında bir iç soruşturma başlattı.
+
+Ve bu hafta gözler Salı gününde. Amerika'da Ekim enflasyon verisi ile yapay zekâ altyapı şirketi CoreWeave'in bilançosu aynı gün geliyor.
+
+## Haftanın okuması
+
+Başlıkların ardından haftanın okumasına geçiyoruz. Bu bölümde her hafta aynı şeyi yapıyoruz. Piyasada hangi fiyatların birlikte hareket ettiğine bakıyor, olanı adlandırıyoruz. Geçen hafta söylediklerimizin tutup tutmadığını kontrol ediyoruz. Ve önümüzdeki haftanın en kırılgan noktalarını konuşuyoruz. Ne olacağını söylemiyoruz, çünkü bu bilinemez. Nerede kırılabileceğini söylüyoruz, çünkü bu ölçülebilir. Bu bir yatırım tavsiyesi değil, bir okuma çalışması.
+
+Geçen haftanın gündemi tek cümleydi: yapay zekâ teması çözülüyor.
+
+Hafta Amerika'daki ara seçimle başladı. Demokratlar Kongre'nin iki kanadını da kazandı. Piyasa bu sonucu büyük ölçüde bekliyordu, o yüzden ilk tepki rahatlama oldu. Çarşamba günü faizler düştü, dolar zayıfladı. Para, yatırımlarını kendi nakit akışıyla finanse eden dev teknoloji şirketlerine aktı. Microsoft ve Amazon bir günde yüzde 6 ile 7 arasında yükseldi.
+
+Perşembe her şey tersine döndü. Yarı iletken endeksi bir günde yüzde 12 düştü. Teknoloji sektörü yüzde 7 kaybetti. İkisi de son altı yılın en sert günüydü. Korku endeksi (VIX) 28'e çıktı, yedi ayın en yüksek seviyesi. Nasdaq, 6 Ekim'deki zirvesinin yaklaşık yüzde 12 altına indi. Teknik olarak düzeltme bölgesinde.
+
+Hafta sonunda tablo şöyleydi. S&P 500 yüzde 2,7 geriledi. Nasdaq yüzde 3,4 kaybetti. Küçük şirketler endeksi Russell 2000 ise yüzde 2 geriledi. S&P 500 dört haftadır düşüyor.
+
+Cuma günü bir sürpriz daha geldi. Ekim istihdam verisinde beklenti 65 bin yeni işti. Gelen rakam 165 bin oldu. İşsizlik yüzde 4,1'e indi. Bu veri, Fed'in Aralık'ta faiz artırma ihtimalini yaklaşık yüzde 80'e taşıdı.
+
+Şimdi önemli bir ayrıma geliyoruz. Ekranlar kırmızıydı, ama bu bir panik değildi.
+
+Panikte her şey birlikte satılır: hisse, tahvil, altın. Perşembe günü böyle olmadı. Hisseler düşerken tahvil ve altın yükseldi. Yani sigortalar çalıştı. Küçük şirketler de hafta boyunca büyük teknoloji şirketlerinden daha az kaybetti.
+
+Bizim bir kuralımız var. Bir sektördeki satışın bütün ekonomiye yayıldığını söylemek için üç işaretin birlikte görülmesi gerekiyor. Birincisi, korku endeksi 20'nin üstünde olmalı. İkincisi, yüksek getirili şirket tahvillerinin risk primi yükselmeli; yani zayıf şirketlerin borçlanma maliyeti artmalı. Üçüncüsü, küçük şirketler büyüklerden kötü performans göstermeli. Geçen hafta ilk ikisi gerçekleşti, üçüncüsü gerçekleşmedi.
+
+O yüzden okumamız değişmedi. Bu, kalabalık bir temanın satışı. Sistemin kırılması değil.
+
+## Karar defteri
+
+Bu programın bir alışkanlığı var. Geçen hafta ne dediysek, bu hafta onu kontrol ediyoruz. Biz buna karar defteri diyoruz.
+
+Geçen hafta üç kırılgan nokta not etmiştik.
+
+Birincisi, pahalanan hafızanın faturasını ödeyenlerdi. Yapay zekâ yüzünden hafıza çipleri rekor fiyatlara çıktı. Bunun kazananı hafıza üreticileri. Faturayı ise telefon ve bilgisayar üreticileri ödüyor. Bu nokta kırıldı. Apple'ın kâr marjı beklentisi daraldı. Qualcomm'un telefon çipi satışları yüzde 26 düştü, hisse bir günde yaklaşık yüzde 10 kaybetti. Kırılma tam not ettiğimiz yerden, şirketlerin geleceğe dönük rehberliğinden geldi.
+
+İkincisi, yapay zekâ yatırımlarının borçla finansmanıydı. O da kırıldı. CoreWeave yaklaşık yüzde 10, Oracle yüzde 7 düştü. Ama burada haritamızda olmayan bir kanal devreye girdi: seçimin ortaya koyduğu veri merkezi karşıtlığı. Bunu önceden konuşmamıştık. Not ediyoruz.
+
+Üçüncüsü, istihdam verisiydi. Güçlü gelirse kısa vadeli faizlerin yükseleceğini ve faiz artırımının neredeyse kesinleşeceğini söylemiştik. Bu doğru çıktı. Ama teknoloji hisselerinin bundan zarar göreceğini de söylemiştik. Bu yanlış çıktı. Perşembe'nin aşırı satışından gelen toparlanma, faizin etkisini bastırdı.
+
+## Haftanın ölçümü
+
+Haftanın ölçümünde bu kez hafıza fiyatları var.
+
+Hafıza fiyatlarını izleyen TrendForce'a göre DRAM spot fiyatları aylardır ilk kez geriledi. Düşüş çok küçük, on binde 9. Ama önemli olan yön. Alıcılar fiyatın fazla yükseldiğini düşünüp bekliyor, işlem hacmi daralıyor. Diğer hafıza türü NAND ise iki haftadır düşüyor.
+
+Hisseler bunu önden fiyatlıyor. Kore'nin hafıza devi SK Hynix son on günde yüzde 20, Samsung yüzde 16 değer kaybetti. Hafıza döngüsünün tepesi artık piyasanın açıkça konuştuğu bir soru.
+
+## Kırılganlık haritası
+
+Şimdi bu haftanın kırılganlık haritasına geçelim. Bir noktayı kırılgan yapan şey, üç koşulun kesişmesi: kalabalık bir pozisyon, biriken bir baskı ve yakında gelecek bir tetikleyici. Bu hafta üç noktaya bakıyoruz.
+
+Birinci nokta, yapay zekâ finansmanı. Tetikleyici, Salı gecesi açıklanacak CoreWeave bilançosu. Bu şirketin durumu bütün hikâyeyi tek satırda özetliyor. Bu çeyrek ödeyeceği faiz, faaliyet kârının yaklaşık üç buçuk katı. Hisse, zirvesinin üçte biri seviyesinde. Opsiyon piyasası yüzde 21 civarında bir hareket fiyatlıyor. Eğer burası kırılırsa, ilk görüneceği yer şirket tahvilleri olur. Bakacağımız şey şu: şirket tahvillerinin risk primi yükselirken kısa vadeli faizler düşüyorsa, piyasa büyüme korkusuna geçiyor demektir.
+
+İkinci nokta, hafıza döngüsünün tepesi. Bu kez kazanan taraf mercek altında. Tetikleyiciler üç tane. Çarşamba günü yeni hafıza fiyat raporu geliyor. Perşembe gecesi çip ekipmanı üreticisi Applied Materials bilanço açıklıyor. Ve bir hafta sonra, 17 Kasım'da, Nvidia geliyor. İlk sinyal her zaman Asya seansından gelir. DRAM fiyatlarında haftalık yüzde 1'den büyük bir düşüş görürsek, döngünün döndüğünü daha yüksek sesle konuşuruz.
+
+Üçüncü nokta, enflasyon ve Fed. Salı günü Türkiye saatiyle 16.30'da Ekim enflasyon verisi açıklanıyor. Beklenti aylık bazda yüzde 0,3, yıllık bazda yüzde 3,9.
+
+Buradaki kırılganlık şu. Petrol fiyatları savaşın zirvesinden belirgin biçimde geriledi. Vadeli Brent, Ekim'deki 118 dolar civarından 95 dolara indi. Piyasanın uzun vadeli enflasyon beklentisi de gevşiyor. Ama Fed hâlâ Aralık'ta faiz artırmaya hazırlanıyor. Bu, aşırı sıkılaştırma riski demek.
+
+Üç senaryo var. Çekirdek enflasyon yüzde 0,4 ya da üstünde gelirse, artırım kesinleşir ve teknoloji hisseleri faiz baskısı hisseder. Beklentide gelirse bir şey değişmez. Yüzde 0,2 ya da altında gelirse artırım ihtimali düşer. Ama aynı anda şirket tahvillerinde bozulma görürsek, bu iyi haber değil, büyüme korkusudur.
+
+Haftanın takvimine kısaca bakalım. Salı öğleden sonra enflasyon verisi, Salı gecesi CoreWeave. Çarşamba Amerika'da Gaziler Günü. Borsalar açık ama tahvil piyasası kapalı. O gün faizlerden sinyal okumayacağız. Perşembe gecesi Cisco ve Applied Materials. Cuma öğleden sonra üretici fiyatları.
+
+Başlıklarda andığımız Nvidia soruşturmasına bir not düşelim. Hisse açılış öncesinde yüzde 4 civarında geriliyor. Bu makro bir olay değil, tek bir şirkete özgü bir risk. Ama yapay zekânın en büyük şirketindeki bu belirsizlik, 17 Kasım'daki bilançoya kadar gündemde kalacak.
+
+## Okumayı ne yanlışlar
+
+Son olarak, bu okumayı neyin yanlışlayacağını söyleyelim. Şirket tahvillerinin risk primi iki gün üst üste yüksek kapanır ve küçük şirketler haftayı Nasdaq'ın gerisinde bitirirse, artık sektörel bir satıştan değil, ekonominin geneline yayılan bir kırılmadan söz ederiz. Ve hisselerle birlikte altın ve tahvil de düşmeye başlarsa, bu likidite krizinin ilk işareti olur. Bunu bu yıl henüz hiç görmedik.
+
+Bir de bu hafta neye bakamadığımızı söyleyelim. Tahvil piyasasının oynaklığına ve hisse değerlemelerinin güncel çarpanlarına bu okumada bakamadık. Kör noktayı adlandırmak, onu görmenin ilk adımı.
+
+Haftanın özeti tek cümle: tema kırılıyor, sistem henüz kırılmıyor. Bu hafta Salı günü, ikisinin arasındaki çizgiyi test edecek.
+
+## Kapanış
+
+Finansal Bilgiler Okulası'ndan Haftaya Başlarken'i dinlediniz. Ben Beril. Bu program yatırım tavsiyesi değildir; bir okuma ve öğrenme çalışmasıdır. Gelecek Pazartesi, bugün söylediklerimizi kontrol ederek başlayacağız. İyi haftalar.`
+}
+  ]
+};
+
+/* ==========================================================================
    FİYAT ÇİZGİSİ — her dizinin kendi çizgisi vardır; her bölümü o yazının
    fiyata verdiği cevapla çizilir.
    ========================================================================== */
@@ -765,7 +967,8 @@ function series(d){
       <div class="nums" aria-hidden="true">${L.starts.map((p,k)=>`<span style="left:${p.toFixed(2)}%">${k+1}</span>`).join("")}</div>
     </figure>
     <nav class="cols${list ? " list" : ""}" style="--n:${n}" aria-label="Dizinin yazıları">${cols}</nav>
-    <p class="caption">Yukarıdaki çizgi dizinin kendisi. ${d.cizgiNotu ? esc(d.cizgiNotu) : "Her bölümü, dizinin bir yazısı"}: ${d.yazilar.map((y,k)=>(k===0?"önce ":"sonra ")+(CIZGI_NOTU[y.cizgi]||CIZGI_NOTU.yuruyus)).join(", ")}.</p>`;
+    <p class="caption">Yukarıdaki çizgi dizinin kendisi. ${d.cizgiNotu ? esc(d.cizgiNotu) : "Her bölümü, dizinin bir yazısı"}: ${d.yazilar.map((y,k)=>(k===0?"önce ":"sonra ")+(CIZGI_NOTU[y.cizgi]||CIZGI_NOTU.yuruyus)).join(", ")}.</p>
+    ${root ? podBand() : ""}`;
   drawn[d.slug] = true;
   const svg = $("#tapebox svg");
   document.querySelectorAll(".col").forEach(c=>{
@@ -812,11 +1015,129 @@ function article(d, y){
   const h = $(".rhead h1"); if (h) h.focus({preventScroll:true});
 }
 
+
+/* ==========================================================================
+   HAFTAYA BAŞLARKEN SAYFALARI
+   ========================================================================== */
+const podUrl = b => `#/${PODCAST.slug}/${b.slug}`;
+const sureYaz = s => s ? `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,"0")}` : "";
+const dakika = s => s ? `${Math.round(s/60)} dakika` : "";
+let audio = null;
+function podBand(){
+  const b = PODCAST.bolumler[0]; if (!b) return "";
+  return `<a class="pod-band" href="${podUrl(b)}">
+    <span class="k">${b.no}</span>
+    <span class="t">Yeni program: ${esc(PODCAST.ad)}, her Pazartesi. ${b.no}. bölüm, ${esc(b.tarih)}${b.sure ? ", " + dakika(b.sure) : ""}</span>
+    <span class="s">${esc(b.baslik)}</span>
+  </a>`;
+}
+function podList(){
+  document.title = PODCAST.ad + " | Finansal Bilgiler Okulası";
+  const eps = PODCAST.bolumler.map(b=>`<a class="ep" href="${podUrl(b)}">
+      <span class="n">${b.no}</span><span class="d">${esc(b.tarih)}</span>
+      <span class="t">${esc(b.baslik)}</span>
+      <span class="rt">${b.sure ? dakika(b.sure) + " dinleme" : ""}</span></a>`).join("");
+  $("#main").innerHTML = `
+    <section class="hero hero-home">
+      <h1>${esc(PODCAST.ad)}</h1>
+      <p>${esc(PODCAST.giris)}</p>
+    </section>
+    <nav class="eps" aria-label="Bölümler">${eps}</nav>
+    <p class="note">Bu program yatırım tavsiyesi değildir; bir okuma ve öğrenme çalışmasıdır. Beril'in sesi yapay zekâyla üretilmiştir.</p>`;
+}
+function podLine(seed, n){
+  const r = rng(seed), ys = []; let y = 0;
+  for (let i=0;i<n;i++){ y += gauss(r)*.5 + (i%23===11 ? (r()<.5?-1:1)*1.4 : 0); ys.push(y); }
+  const lo = Math.min(...ys), hi = Math.max(...ys);
+  return ys.map((v,i)=>(i?"L":"M")+(i/(n-1)*1000).toFixed(1)+" "+(70-(v-lo)/(hi-lo||1)*60).toFixed(1)).join("");
+}
+function podEpisode(b){
+  document.title = b.baslik.replace(/\.$/,"") + " | " + PODCAST.ad;
+  const d = podLine(4200 + b.no*17, 260);
+  const kis = b.kisimlar.map(k=>`<li><button type="button" data-t="${k[0]}"><span>${sureYaz(k[0]) || "0:00"}</span>${esc(k[1])}</button></li>`).join("");
+  const chLines = b.sure ? b.kisimlar.slice(1).map(k=>{ const x=(k[0]/b.sure*1000).toFixed(1); return `<line class="ch" x1="${x}" y1="0" x2="${x}" y2="80"/>`; }).join("") : "";
+  $("#main").innerHTML = `
+    <article class="read pod">
+      <header class="rhead">
+        <p class="which"><a href="#/${PODCAST.slug}">${esc(PODCAST.ad)}</a>, <em>${b.no}. bölüm</em>, ${esc(b.tarih)}</p>
+        <h1 tabindex="-1">${esc(b.baslik)}</h1>
+        <p class="deck">${inline(b.spot)}</p>
+      </header>
+      <section class="player" aria-label="Bölümü dinle">
+        <div class="pl-row">
+          <button class="pl-btn" type="button" id="pl-btn" aria-label="Dinle"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="pl-ico" d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></button>
+          <div class="pl-line" id="pl-line" role="slider" tabindex="0" aria-label="Bölümde ilerle" aria-valuemin="0" aria-valuemax="${Math.round(b.sure)||0}" aria-valuenow="0">
+            <svg viewBox="0 0 1000 80" preserveAspectRatio="none" aria-hidden="true">
+              <defs><clipPath id="pl-clip"><rect id="pl-rect" x="0" y="-10" width="0" height="100"/></clipPath></defs>
+              ${chLines}
+              <path class="base" d="${d}"/>
+              <path class="done" d="${d}" clip-path="url(#pl-clip)"/>
+              <line class="head" id="pl-head" x1="0" y1="0" x2="0" y2="80"/>
+            </svg>
+          </div>
+        </div>
+        <div class="pl-meta"><span id="pl-time">0:00 / ${sureYaz(b.sure) || "–"}</span>
+          <span class="r"><button type="button" id="pl-geri">15 sn geri</button><button type="button" id="pl-hiz">Hız 1×</button><a href="${b.ses}" download>İndir</a></span></div>
+        ${kis ? `<ol class="chap">${kis}</ol>` : ""}
+        <audio id="pl-audio" preload="metadata" src="${b.ses}"></audio>
+      </section>
+      <section class="box"><h2>Başlıklar</h2><ol>${b.basliklar.map(x=>`<li><span>${esc(x)}</span></li>`).join("")}</ol></section>
+      <section class="box"><h2>Bu haftanın kırılgan noktaları</h2><ol>${b.kirilgan.map(x=>`<li><span><b>${esc(x[0])}</b><span class="w">${esc(x[1])}</span></span></li>`).join("")}</ol></section>
+      <details class="tx"><summary>Bölümün metni</summary><div class="body">${render(b.metin)}</div></details>
+      <section class="box src"><h2>Kaynaklar</h2><ul>${b.kaynaklar.map(x=>`<li><a href="${x[1]}" target="_blank" rel="noopener">${esc(x[0])}</a></li>`).join("")}</ul></section>
+      <p class="small">${esc(b.verilerTarihi)} Bu program yatırım tavsiyesi değildir; bir okuma ve öğrenme çalışmasıdır.</p>
+      <p class="small">Sunan: Beril. Beril'in sesi yapay zekâyla üretilmiştir (ElevenLabs). Hazırlayan: Mehmet Cihat Keleş.</p>
+      <footer class="next"><a class="back" href="#/${PODCAST.slug}">Tüm bölümler</a></footer>
+    </article>`;
+  playerKur(b);
+  const h = $(".rhead h1"); if (h) h.focus({preventScroll:true});
+}
+function playerKur(b){
+  const a = audio = $("#pl-audio"), btn = $("#pl-btn"), ico = $("#pl-ico"), line = $("#pl-line");
+  const rect = $("#pl-rect"), head = $("#pl-head"), time = $("#pl-time"), hizB = $("#pl-hiz");
+  const HIZ = [1, 1.25, 1.5, .9]; let hi = 0;
+  const dur = () => (isFinite(a.duration) && a.duration) || b.sure || 0;
+  const paint = () => {
+    const D = dur(), p = D ? a.currentTime / D : 0, x = (p*1000).toFixed(1);
+    rect.setAttribute("width", x); head.setAttribute("x1", x); head.setAttribute("x2", x);
+    time.textContent = `${sureYaz(a.currentTime) || "0:00"} / ${sureYaz(D) || "–"}`;
+    line.setAttribute("aria-valuenow", Math.round(a.currentTime)); line.setAttribute("aria-valuetext", sureYaz(a.currentTime) || "0:00");
+    document.querySelectorAll(".chap button").forEach((c,i,all)=>{
+      const t0 = +c.dataset.t, t1 = all[i+1] ? +all[i+1].dataset.t : Infinity;
+      c.classList.toggle("on", a.currentTime >= t0 && a.currentTime < t1 && a.currentTime > 0);
+    });
+  };
+  const icon = () => { const on = !a.paused; ico.setAttribute("d", on ? "M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z" : "M7 4.5v15l13-7.5z"); btn.setAttribute("aria-label", on ? "Duraklat" : "Dinle"); };
+  btn.onclick = () => a.paused ? a.play() : a.pause();
+  a.addEventListener("play", icon); a.addEventListener("pause", icon); a.addEventListener("ended", icon);
+  a.addEventListener("timeupdate", paint); a.addEventListener("loadedmetadata", paint);
+  const seek = e => { const r = line.getBoundingClientRect(); const p = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)); if (dur()) { a.currentTime = p*dur(); paint(); } };
+  let drag = false;
+  line.addEventListener("pointerdown", e=>{ drag = true; line.setPointerCapture(e.pointerId); seek(e); });
+  line.addEventListener("pointermove", e=>{ if (drag) seek(e); });
+  line.addEventListener("pointerup", ()=>{ drag = false; });
+  line.addEventListener("keydown", e=>{
+    if (e.key==="ArrowRight"){ a.currentTime = Math.min(dur(), a.currentTime+10); e.preventDefault(); }
+    if (e.key==="ArrowLeft"){ a.currentTime = Math.max(0, a.currentTime-10); e.preventDefault(); }
+    if (e.key===" "){ btn.click(); e.preventDefault(); }
+  });
+  $("#pl-geri").onclick = () => { a.currentTime = Math.max(0, a.currentTime - 15); };
+  hizB.onclick = () => { hi = (hi+1) % HIZ.length; a.playbackRate = HIZ[hi]; hizB.textContent = `Hız ${String(HIZ[hi]).replace(".",",")}×`; };
+  document.querySelectorAll(".chap button").forEach(c=> c.onclick = () => { a.currentTime = +c.dataset.t; if (a.paused) a.play(); });
+  paint();
+}
+
 let current = null;
 function route(){
   const h = location.hash;
   let m;
   current = null;
+  if (audio){ audio.pause(); audio = null; }
+  if ((m = h.match(/^#\/haftaya-baslarken(?:\/([\w-]+))?/))){
+    const b = m[1] && PODCAST.bolumler.find(z=>z.slug===m[1]);
+    if (b) podEpisode(b); else podList();
+    window.scrollTo(0,0); progress(); return;
+  }
   if ((m = h.match(/^#\/yazi\/([\w-]+)/))){           // eski bağlantılar
     for (const d of DIZILER){ const y = d.yazilar.find(z=>z.slug===m[1] && z.hazir); if (y){ location.replace(yaziUrl(d,y)); return; } }
   }
