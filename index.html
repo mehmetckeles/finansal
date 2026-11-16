@@ -8,7 +8,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Finansal Bilgiler Okulası">
 <meta property="og:description" content="Fiyat nedir, nereye gider, izini nasıl süreriz? Bu soruya cevap aramış insanların hikâyeleri.">
-<meta property="og:url" content="https://finansal.mehmetcihatkeles.com/">
+<meta property="og:url" content="https://mehmetcihatkeles.com/finansal/">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#EDEFEA">
@@ -98,6 +98,22 @@ a.col:hover .ans, a.col:focus-visible .ans{text-decoration:underline;text-decora
 @media (max-width:760px){.cols.list .col{grid-template-columns:2.6rem 1fr}.cols.list .col .ttl,.cols.list .col .rt{grid-column:2;grid-row:auto}}
 .caption{margin:30px 0 0;font-size:1rem;font-style:italic;color:var(--muted);max-width:60ch}
 
+.kavsak{margin-top:clamp(64px,10vw,110px);padding-top:26px;border-top:1px solid var(--rule)}
+.kv-tick{margin:0 0 16px;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.kv-grid{display:grid;gap:14px}
+@media(min-width:760px){.kv-grid{grid-template-columns:1fr 1fr}}
+.kv-card{display:grid;gap:4px;text-decoration:none;color:var(--ink);border:1px solid var(--rule);padding:18px 20px;background:var(--soft)}
+.kv-card:hover{border-color:var(--ink)}
+.kv-n{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+.kv-card[data-okul="okula"] .kv-n{color:#4A8A70}.kv-card[data-okul="tarihten"] .kv-n{color:#A8732C}
+.kv-l{font-style:italic;color:var(--muted);font-size:.98rem}
+.kv-t{font-size:1.35rem;line-height:1.2;font-weight:500}
+.kv-m{color:var(--muted);font-size:.9rem}
+.kv-imza{display:flex;align-items:center;gap:16px;margin-top:34px;text-decoration:none;color:var(--ink)}
+.kv-imza img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:1px solid var(--rule);flex:none}
+.kv-imza b{display:block;font-weight:600;font-size:1.1rem}
+.kv-imza span span{display:block;color:var(--muted);font-size:.98rem;line-height:1.4}
+.kavsak + .foot{margin-top:40px}
 .foot{margin-top:clamp(80px,12vw,140px);padding:26px 0 40px;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;font-size:.95rem;color:var(--muted)}
 .foot a{text-decoration:none}
 .foot a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
@@ -242,14 +258,15 @@ details.tx .body{padding:6px 0 18px}
     <div class="top-r">
       <a class="pod-link" href="#/haftaya-baslarken">Haftaya <b>Başlarken</b></a>
       <a class="home-link" id="all-link" href="#/diziler" hidden>Tüm diziler</a>
-      <a class="home-link" href="https://mehmetcihatkeles.com" target="_blank" rel="noopener">Mehmet Cihat Keleş</a>
+      <a class="home-link" href="/">Mehmet Cihat Keleş</a>
       <button class="theme" id="theme" type="button">Gece</button>
     </div>
   </header>
   <main id="main"></main>
+  <section class="kavsak" aria-label="Öteki okullar"><p class="kv-tick">Öteki okullar</p><div class="kv-grid"><a class="kv-card" href="/okula/" data-okul="okula"><span class="kv-n">↗ Köpeksel Bilgiler Okulası</span><span class="kv-l">Köpeklerle kurduğumuz bağ üzerine 59 deneme</span><span class="kv-t">Okuyun, öğrenin.</span><span class="kv-m">rotalar ve çatallar</span></a><a class="kv-card" href="/tarihten/" data-okul="tarihten"><span class="kv-n">↗ Tarihten Köpekler</span><span class="kv-l">Her sabah arşivden bir köpek çıkıyor</span><span class="kv-t">Tarihin neresinde bir köpek vardı?</span><span class="kv-m">her gün yeni bir hikâye</span></a></div><a class="kv-imza" href="/"><img src="/img/portre-kucuk.jpg" alt="" width="56" height="56" loading="lazy"><span><b>Mehmet Cihat Keleş</b><span>Köpek eğitmeni ve yazar · Hokairi Köpek Evi’nin kurucusu →</span></span></a></section>
   <footer class="foot">
-    <span>Yazan: <a href="https://mehmetcihatkeles.com" target="_blank" rel="noopener">Mehmet Cihat Keleş</a></span>
-    <span>Kardeş okul: <a href="https://okula.mehmetcihatkeles.com" target="_blank" rel="noopener">Köpeksel Bilgiler Okulası</a></span>
+    <span>Yazan: <a href="/">Mehmet Cihat Keleş</a></span>
+    <span>Kardeş okul: <a href="/okula/">Köpeksel Bilgiler Okulası</a></span>
   </footer>
 </div>
 
